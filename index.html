@@ -4,7 +4,7 @@
   Program: Code & Care 2026 – Scratch pentru un viitor mai bun
   Hosting: Netlify / GitHub Pages
 
-  CROMATICĂ DIN LOGO (user provided):
+  CROMATICĂ (din logo):
     - Brand Dark:   #0e448c
     - Brand Light:  #25a3df
     - Brand Mid:    #0c79bc
@@ -13,14 +13,14 @@
 
   Include:
   ✅ Topbar sticky (meniu rămâne la scroll)
-  ✅ SEO: title/description/robots/author/theme-color + geo meta
+  ✅ SEO complet + OG/Twitter (Facebook/LinkedIn preview)
+  ✅ OG/Twitter image setată pe: CURSURI CALCULATOARE ADJUD.png
   ✅ Canonical + og:url setate automat din CANONICAL_URL (JS)
-  ✅ OG/Twitter meta
-  ✅ JSON-LD: Course + EducationalOrganization + Service + Person (trainer)
+  ✅ JSON-LD: Course + EducationalOrganization + Service + Person + ImageObject
   ✅ Logo rotund (RAW GitHub) centrat în cerc
   ✅ CTA email (mailto precompletat) către thetechologyhub@gmail.com
-  ✅ WhatsApp buttons + WhatsApp floating button (mesaj precompletat)
-  ✅ Secțiune Formator cu imagine (RAW GitHub) responsive premium pe mobil
+  ✅ WhatsApp buttons + buton floating (mesaj precompletat)
+  ✅ Formator: imagine nouă (Formator Marian DUMITRU.jpg) + framing premium pe mobil/PC
   ✅ Buton către CV (mariandumitrucv.netlify.app)
   ============================================================
 -->
@@ -30,7 +30,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- SEO (fără impact vizual) -->
+  <!-- ===================== SEO (no UI impact) ===================== -->
   <title>Curs IT Adjud pentru copii (8–13) • Scratch | Youth Code Academy</title>
   <meta name="description" content="Curs IT în Adjud pentru copii (8–13 ani): Scratch, logică, creativitate și proiecte interactive. Youth Code Academy – cursuri copii Adjud, cursuri tineri Adjud. Înscriere rapidă." />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
@@ -40,25 +40,33 @@
   <!-- Canonical (se setează automat din CANONICAL_URL în JS) -->
   <link id="canonicalLink" rel="canonical" href="https://example.com/" />
 
-  <!-- Open Graph / Social -->
+  <!-- ===================== Social Preview (Facebook / LinkedIn / WhatsApp) ===================== -->
   <meta property="og:locale" content="ro_RO" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Youth Code Academy – Adjud" />
-  <meta property="og:title" content="Curs IT Adjud • Cursuri copii și tineri | Code & Care 2026 (Scratch)" />
+  <meta property="og:title" content="Curs IT Adjud • Cursuri copii și tineri | Youth Code Academy" />
   <meta property="og:description" content="Cursuri IT pentru copii (8–13 ani) în Adjud: Scratch, logică, creativitate și proiecte interactive. Locuri limitate." />
   <meta property="og:url" id="ogUrl" content="https://example.com/" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/27e0875082dc9525492663af37577084dcf9b816/logo%20program%20-%20Youth%20Code%20Academy.jpg" />
-  <meta property="og:image:alt" content="Youth Code Academy – curs IT Adjud pentru copii și tineri" />
 
-  <!-- Twitter -->
+  <!-- OG Image (IMPORTANT pentru Facebook/LinkedIn preview) -->
+  <meta property="og:image" content="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/3144fb2cf8bc84bfecae23a68b4696b22c2332d8/CURSURI%20CALCULATOARE%20ADJUD.png" />
+  <meta property="og:image:alt" content="Curs IT Adjud pentru copii – Youth Code Academy (Scratch, creativitate, logică)" />
+
+  <!-- (Optional) Fallback logo -->
+  <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/3144fb2cf8bc84bfecae23a68b4696b22c2332d8/CURSURI%20CALCULATOARE%20ADJUD.png" />
+
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Curs IT Adjud • Scratch pentru copii | Youth Code Academy" />
   <meta name="twitter:description" content="Cursuri copii Adjud: Scratch, logică, creativitate. Înscriere rapidă." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/27e0875082dc9525492663af37577084dcf9b816/logo%20program%20-%20Youth%20Code%20Academy.jpg" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/3144fb2cf8bc84bfecae23a68b4696b22c2332d8/CURSURI%20CALCULATOARE%20ADJUD.png" />
 
   <!-- Geo -->
   <meta name="geo.region" content="RO-VN" />
   <meta name="geo.placename" content="Adjud" />
+
+  <!-- Preload social image (helps LCP if you show it later; no harm) -->
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/3144fb2cf8bc84bfecae23a68b4696b22c2332d8/CURSURI%20CALCULATOARE%20ADJUD.png" />
 
   <style>
     :root{
@@ -258,7 +266,6 @@
       margin-bottom: 14px;
     }
     .badge b{ color: var(--brand); }
-
     .badge.limit{
       border-color: rgba(12,121,188,.22);
       background: rgba(37,163,223,.10);
@@ -455,14 +462,13 @@
     .step h3{ margin: 0 0 6px; color: var(--brand); font-weight: 1000; }
     .step p{ margin: 0; color: var(--muted); font-size: 14px; line-height:1.55; font-weight: 650; }
 
-    /* Trainer section (premium pe mobil) */
+    /* Trainer section — framing premium PC + mobil */
     .trainer{
       display:grid;
       grid-template-columns: 180px 1fr;
       gap: 16px;
       align-items: start;
     }
-
     .trainer-photo{
       width: 180px;
       height: 180px;
@@ -477,15 +483,15 @@
       width:100%;
       height:100%;
       object-fit: cover;
-      object-position: 50% 20%; /* focus mai sus: față/ochi */
+      /* focus pe față: mai sus decât centru */
+      object-position: 50% 22%;
       display:block;
     }
-    /* overlay subtil (premium) */
     .trainer-photo::after{
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(180deg, rgba(14,68,140,.05), rgba(14,68,140,.12));
+      background: linear-gradient(180deg, rgba(14,68,140,.04), rgba(14,68,140,.12));
       pointer-events:none;
     }
 
@@ -656,20 +662,18 @@
       .nav{ display:none; }
     }
 
-    /* Trainer — mobile premium framing */
+    /* Trainer — mobile premium cover */
     @media (max-width: 860px){
-      .trainer{
-        grid-template-columns: 1fr;
-      }
+      .trainer{ grid-template-columns: 1fr; }
       .trainer-photo{
         width: 100%;
         height: auto;
-        aspect-ratio: 16 / 10; /* profi pe mobil, tip cover */
+        aspect-ratio: 16 / 10;
         border-radius: 18px;
       }
       .trainer-photo img{
         height: 100%;
-        object-position: 50% 18%;
+        object-position: 50% 20%;
       }
     }
 
@@ -689,7 +693,7 @@
     }
   </style>
 
-  <!-- JSON-LD: Course -->
+  <!-- ===================== JSON-LD ===================== -->
   <script type="application/ld+json" id="jsonldCourse">
   {
     "@context":"https://schema.org",
@@ -711,7 +715,6 @@
   }
   </script>
 
-  <!-- JSON-LD: Org + Service (keywords) -->
   <script type="application/ld+json" id="jsonldOrgService">
   {
     "@context":"https://schema.org",
@@ -738,10 +741,7 @@
         "name":"Curs IT Adjud – Scratch pentru copii și tineri",
         "provider":{"@id":"https://example.com/#org"},
         "areaServed":"Adjud",
-        "audience":{
-          "@type":"Audience",
-          "audienceType":"Copii 8–13 și tineri (începători)"
-        },
+        "audience":{"@type":"Audience","audienceType":"Copii 8–13 și tineri (începători)"},
         "keywords":[
           "curs it Adjud",
           "cursuri copii Adjud",
@@ -755,7 +755,6 @@
   }
   </script>
 
-  <!-- JSON-LD: Person (Formator) -->
   <script type="application/ld+json" id="jsonldPerson">
   {
     "@context":"https://schema.org",
@@ -763,14 +762,19 @@
     "name":"Marian Dumitru",
     "jobTitle":"Formator Scratch • UX/UI Designer • Junior Frontend Developer",
     "url":"https://mariandumitrucv.netlify.app/",
-    "affiliation":{
-      "@type":"Organization",
-      "name":"Youth Code Academy – Tech for Social Impact"
-    },
-    "worksFor":{
-      "@type":"Organization",
-      "name":"Youth Code Academy – Tech for Social Impact"
-    }
+    "affiliation":{"@type":"Organization","name":"Youth Code Academy – Tech for Social Impact"},
+    "worksFor":{"@type":"Organization","name":"Youth Code Academy – Tech for Social Impact"}
+  }
+  </script>
+
+  <!-- SEO extra: ImageObject pentru imaginea de share -->
+  <script type="application/ld+json" id="jsonldImage">
+  {
+    "@context":"https://schema.org",
+    "@type":"ImageObject",
+    "name":"Cursuri Calculatoare Adjud – Youth Code Academy",
+    "caption":"Curs IT Adjud pentru copii și tineri: Scratch, creativitate, logică.",
+    "contentUrl":"https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/3144fb2cf8bc84bfecae23a68b4696b22c2332d8/CURSURI%20CALCULATOARE%20ADJUD.png"
   }
   </script>
 </head>
@@ -848,7 +852,6 @@
             </div>
           </div>
 
-          <!-- wave -->
           <svg class="hero-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
             <path d="M0,64 C180,120 360,10 540,60 C720,110 900,30 1080,70 C1260,110 1350,120 1440,96 L1440,120 L0,120 Z"
               fill="rgba(37,163,223,.14)"></path>
@@ -999,11 +1002,10 @@
         <div class="trainer">
           <div class="trainer-photo" aria-hidden="true">
             <img
-  src="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/61cd001ba9589f34ccd9ad12bc94db361462a31e/Formator%20Marian%20DUMITRU.jpg"
-  alt="Marian Dumitru – Formator Youth Code Academy"
-  loading="lazy"
-/>
-
+              src="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/61cd001ba9589f34ccd9ad12bc94db361462a31e/Formator%20Marian%20DUMITRU.jpg"
+              alt="Marian Dumitru – Formator Youth Code Academy"
+              loading="lazy"
+            />
           </div>
 
           <div>
