@@ -12,15 +12,15 @@
     - Slate Text:   #394e68
 
   Include:
-  ✅ Topbar sticky (meniu rămâne la scroll)
+  ✅ Topbar sticky + FIX mobil (2 rânduri: brand sus, butoane jos)
   ✅ SEO complet + OG/Twitter (Facebook/LinkedIn preview)
-  ✅ OG/Twitter image setată pe: CURSURI CALCULATOARE ADJUD.png
+  ✅ OG/Twitter image: CURSURI CALCULATOARE ADJUD.png
   ✅ Canonical + og:url setate automat din CANONICAL_URL (JS)
   ✅ JSON-LD: Course + EducationalOrganization + Service + Person + ImageObject
   ✅ Logo rotund (RAW GitHub) centrat în cerc
   ✅ CTA email (mailto precompletat) către thetechologyhub@gmail.com
   ✅ WhatsApp buttons + buton floating (mesaj precompletat)
-  ✅ Formator: imagine nouă (Formator Marian DUMITRU.jpg) + framing premium pe mobil/PC
+  ✅ Formator: imagine nouă + framing premium pe mobil/PC
   ✅ Buton către CV (mariandumitrucv.netlify.app)
   ============================================================
 -->
@@ -51,8 +51,6 @@
   <!-- OG Image (IMPORTANT pentru Facebook/LinkedIn preview) -->
   <meta property="og:image" content="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/3144fb2cf8bc84bfecae23a68b4696b22c2332d8/CURSURI%20CALCULATOARE%20ADJUD.png" />
   <meta property="og:image:alt" content="Curs IT Adjud pentru copii – Youth Code Academy (Scratch, creativitate, logică)" />
-
-  <!-- (Optional) Fallback logo -->
   <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/3144fb2cf8bc84bfecae23a68b4696b22c2332d8/CURSURI%20CALCULATOARE%20ADJUD.png" />
 
   <!-- Twitter / X -->
@@ -65,7 +63,7 @@
   <meta name="geo.region" content="RO-VN" />
   <meta name="geo.placename" content="Adjud" />
 
-  <!-- Preload social image (helps LCP if you show it later; no harm) -->
+  <!-- Preload social image -->
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/3144fb2cf8bc84bfecae23a68b4696b22c2332d8/CURSURI%20CALCULATOARE%20ADJUD.png" />
 
   <style>
@@ -124,10 +122,11 @@
       padding: 14px 24px;
       max-width: var(--max);
       margin: 0 auto;
+      flex-wrap: nowrap; /* desktop */
     }
     .brand{
       display:flex; align-items:center; gap:12px;
-      min-width: 260px;
+      min-width: 0; /* FIX: să nu împingă pe mobil */
     }
 
     .logo{
@@ -483,7 +482,6 @@
       width:100%;
       height:100%;
       object-fit: cover;
-      /* focus pe față: mai sus decât centru */
       object-position: 50% 22%;
       display:block;
     }
@@ -654,11 +652,10 @@
       margin-top: 2px;
     }
 
-    /* Responsive */
+    /* Responsive (general) */
     @media (max-width: 980px){
       .hero-grid{ grid-template-columns: 1fr; }
       .actions{ min-width: unset; }
-      .brand{ min-width: unset; }
       .nav{ display:none; }
     }
 
@@ -686,6 +683,58 @@
       .logo{ width: 48px; height: 48px; flex: 0 0 48px; }
       .hero-wave{ height: 92px; }
       .wa-float{ right: 12px; bottom: 12px; }
+    }
+
+    /* =========================
+       TOPBAR MOBILE FIX (2 rânduri)
+       ========================= */
+    @media (max-width: 560px){
+      .topbar .row{
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 12px;
+      }
+
+      .brand{
+        width: 100%;
+        justify-content: flex-start;
+        gap: 10px;
+      }
+
+      .logo{
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
+      }
+
+      .brand strong{
+        font-size: 14px;
+        line-height: 1.05;
+      }
+      .brand small{
+        font-size: 12px;
+        line-height: 1.1;
+        opacity: .9;
+      }
+
+      .actions{
+        width: 100%;
+        min-width: 0;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .actions .btn{
+        flex: 1 1 0;
+        padding: 11px 12px;
+        font-size: 13.5px;
+        justify-content: center;
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 380px){
+      .brand small{ display:none; }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -767,7 +816,6 @@
   }
   </script>
 
-  <!-- SEO extra: ImageObject pentru imaginea de share -->
   <script type="application/ld+json" id="jsonldImage">
   {
     "@context":"https://schema.org",
@@ -1017,8 +1065,8 @@
             </div>
 
             <p>
-              Marian Dumitru este formator autorizat dar si programator de mai bine de 12 ani. A unde a creat programe educaționale în domeniul tehnologiei, cu focus pe
-              <b>învățare practică</b>, <b>creativitate</b> și <b>dezvoltarea gândirii critice de 5 ani de zile in orașul Adjud, Focșani, Bacău dar și București</b>.
+              Marian Dumitru este formator și creator de programe educaționale în domeniul tehnologiei, cu focus pe
+              <b>învățare practică</b>, <b>creativitate</b> și <b>dezvoltarea gândirii critice</b>.
               În cadrul Youth Code Academy, ghidează copiii pas cu pas în Scratch, transformând ideile lor în
               animații, jocuri și proiecte cu sens, într-un mediu prietenos, sigur și motivant.
               Abordarea sa combină pedagogia modernă cu designul și dezvoltarea web, astfel încât fiecare copil să
@@ -1172,9 +1220,7 @@
       }catch(e){}
     })();
 
-    // ============================================================
     // Contact actions (mailto + WhatsApp)
-    // ============================================================
     const TO_EMAIL = "thetechologyhub@gmail.com";
     const WHATSAPP_PHONE_INT = "40772246337"; // 0772246337 -> format internațional fără +
     const SUBJECT = "Înscriere – Code & Care 2026 (Scratch) | Youth Code Academy – Adjud";
