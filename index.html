@@ -2,18 +2,13 @@
   ============================================================
   index.html — Youth Code Academy (Adjud)
   Program: Code & Care 2026 – Scratch pentru un viitor mai bun
-  CROMATICĂ DIN LOGO (user provided):
-    - Brand Dark:   #0e448c
-    - Brand Light:  #25a3df
-    - Brand Mid:    #0c79bc
-    - Cream BG:     #fbf6e4
-    - Slate Text:   #394e68
+  CROMATICĂ DIN LOGO:
+    #0e448c (brand), #25a3df (light), #0c79bc (mid), #fbf6e4 (cream), #394e68 (slate)
 
-  Funcționalități:
-  - Logo rotund (RAW GitHub) centrat în cerc
-  - Buton „Înscrie-te” => mailto precompletat către thetechologyhub@gmail.com
-  - Buton WhatsApp => mesaj precompletat (Doresc info legat de curs…)
-  - Responsive (mobil/tablet/PC)
+  Hosting: Netlify / GitHub Pages
+  - Logo rotund (RAW GitHub)
+  - Înscriere: mailto precompletat către thetechologyhub@gmail.com
+  - Contact: WhatsApp precompletat + buton flotant
   ============================================================
 -->
 <!doctype html>
@@ -31,33 +26,26 @@
   <meta property="og:type" content="website" />
 
   <style>
-    /* ============================================================
-       CROMATICĂ LOGO (aplicată pe tot UI-ul)
-       ============================================================ */
     :root{
-      /* Brand (din logo) */
-      --brand:   #0e448c; /* principal */
-      --brand2:  #25a3df; /* secundar (luminos) */
-      --brand3:  #0c79bc; /* intermediar */
-      --cream:   #fbf6e4; /* fundal cald */
-      --slate:   #394e68; /* text/slate */
+      --brand:#0e448c;
+      --brand2:#25a3df;
+      --brand3:#0c79bc;
+      --cream:#fbf6e4;
+      --slate:#394e68;
 
-      /* Neutre / Derivate */
-      --bg:      #fbf6e4;
-      --surface: rgba(255,255,255,.78);
-      --card:    rgba(255,255,255,.92);
-      --text:    #213446;      /* mai închis decât slate pentru contrast */
-      --muted:   #394e68;      /* slate din logo */
-      --muted2:  rgba(57,78,104,.85);
+      --bg: var(--cream);
+      --text:#213446;
+      --muted: var(--slate);
+      --muted2: rgba(57,78,104,.86);
 
-      --line:    rgba(57,78,104,.16);
-      --line2:   rgba(57,78,104,.10);
+      --line: rgba(57,78,104,.14);
+      --line2: rgba(57,78,104,.10);
 
-      --shadow:  0 18px 44px rgba(57,78,104,.15);
+      --shadow: 0 18px 44px rgba(57,78,104,.15);
       --shadow2: 0 10px 22px rgba(57,78,104,.12);
 
-      --radius:  20px;
-      --max:     1120px;
+      --radius: 20px;
+      --max: 1120px;
     }
 
     *{ box-sizing:border-box; }
@@ -67,22 +55,21 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color: var(--text);
       background:
-        radial-gradient(900px 520px at 12% 0%, rgba(37,163,223,.20), transparent 60%),
+        radial-gradient(900px 520px at 12% 0%, rgba(37,163,223,.22), transparent 60%),
         radial-gradient(900px 520px at 88% 10%, rgba(14,68,140,.16), transparent 62%),
         radial-gradient(720px 440px at 50% 95%, rgba(12,121,188,.14), transparent 62%),
         linear-gradient(180deg, #fffaf0, var(--bg) 55%, #fffaf0);
       overflow-x:hidden;
     }
+
     a{ color:inherit; text-decoration:none; }
     .wrap{ max-width: var(--max); margin:0 auto; padding: 24px; }
 
-    /* =========================
-       Topbar
-       ========================= */
+    /* Topbar */
     .topbar{
       position: sticky; top:0; z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(251,246,228,.82);
+      background: rgba(251,246,228,.86);
       border-bottom: 1px solid var(--line2);
     }
     .topbar .row{
@@ -97,7 +84,6 @@
       min-width: 260px;
     }
 
-    /* Logo rotund cu imagine centrată */
     .logo{
       width: 52px;
       height: 52px;
@@ -163,7 +149,7 @@
       padding: 12px 14px;
       border-radius: 999px;
       border: 1px solid rgba(57,78,104,.16);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.88);
       color: var(--text);
       font-weight: 1000;
       font-size: 14px;
@@ -172,35 +158,31 @@
       box-shadow: var(--shadow2);
       white-space:nowrap;
     }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.95); }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.96); }
     .btn:active{ transform: translateY(0px) scale(.99); }
 
-    /* Primary: gradient pe culorile din logo */
     .btn.primary{
       background: linear-gradient(135deg, var(--brand2), var(--brand));
       border-color: rgba(14,68,140,.20);
       box-shadow: 0 18px 34px rgba(14,68,140,.20);
       color: #fff;
     }
-    .btn.primary:hover{ filter: brightness(1.02); }
 
-    /* WhatsApp: păstrăm verdele WhatsApp, dar îl „îmblânzim” cu crema din logo */
     .btn.whatsapp{
       background: linear-gradient(180deg, rgba(37,211,102,.14), rgba(37,211,102,.10));
       border-color: rgba(37,211,102,.26);
       color: var(--text);
     }
 
-    /* =========================
-       Hero
-       ========================= */
-    .hero{ padding: 30px 0 10px; }
+    /* Hero */
+    .hero{ padding: 30px 0 10px; position:relative; }
     .hero-grid{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap: 18px;
       align-items: stretch;
     }
+
     .hero-card{
       border-radius: var(--radius);
       border: 1px solid var(--line2);
@@ -210,6 +192,16 @@
       position: relative;
     }
     .hero-card .pad{ padding: 28px; }
+
+    /* wave (subtil, cromatică logo) */
+    .hero-wave{
+      position:absolute;
+      left:0; right:0;
+      bottom:-2px;
+      height: 120px;
+      pointer-events:none;
+      opacity: .9;
+    }
 
     .badge{
       display:inline-flex; align-items:center; gap:10px;
@@ -223,6 +215,12 @@
       margin-bottom: 14px;
     }
     .badge b{ color: var(--brand); }
+
+    .badge.limit{
+      border-color: rgba(12,121,188,.22);
+      background: rgba(37,163,223,.10);
+      color: var(--brand);
+    }
 
     h1{
       margin: 0 0 12px;
@@ -307,9 +305,7 @@
     .kpi b{ display:block; font-size: 18px; color: var(--brand); }
     .kpi span{ color: var(--muted2); font-size: 12.5px; font-weight: 800; }
 
-    /* =========================
-       Sections
-       ========================= */
+    /* Sections */
     section{ padding: 18px 0; }
     .grid3{
       display:grid;
@@ -440,6 +436,36 @@
     }
     .faq{ display:grid; gap: 10px; }
 
+    /* Strong final CTA */
+    .cta-final{
+      border-radius: var(--radius);
+      border: 1px solid rgba(14,68,140,.18);
+      background:
+        radial-gradient(600px 220px at 10% 0%, rgba(37,163,223,.22), transparent 60%),
+        radial-gradient(600px 220px at 90% 10%, rgba(14,68,140,.16), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.86));
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .cta-final h3{
+      margin:0 0 6px;
+      color: var(--brand);
+      font-weight: 1100;
+      letter-spacing:-.01em;
+    }
+    .cta-final p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.55;
+      font-weight:650;
+      max-width: 62ch;
+    }
+
     /* Footer */
     footer{ padding: 22px 0 34px; color: var(--muted2); font-size: 13px; font-weight: 750; }
     .footer-card{
@@ -464,11 +490,46 @@
       color: var(--brand);
       font-weight: 1000;
     }
-    .small-links a:hover{
-      background: rgba(14,68,140,.10);
+    .small-links a:hover{ background: rgba(14,68,140,.10); }
+
+    /* Floating WhatsApp */
+    .wa-float{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 50;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(37,211,102,.28);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 18px 40px rgba(57,78,104,.16);
+      cursor:pointer;
+      font-weight: 1000;
+      color: var(--text);
+      transition: transform .15s ease, filter .2s ease;
+    }
+    .wa-float:hover{ transform: translateY(-2px); filter: brightness(1.02); }
+    .wa-badge{
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      background: rgba(37,211,102,.14);
+      border: 1px solid rgba(37,211,102,.26);
+      font-size: 18px;
+    }
+    .wa-sub{
+      display:block;
+      font-size: 12px;
+      font-weight: 850;
+      color: var(--muted);
+      margin-top: 2px;
     }
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{ grid-template-columns: 1fr; }
       .actions{ min-width: unset; }
@@ -482,15 +543,15 @@
       .wrap{ padding: 18px; }
       .hero-card .pad{ padding: 20px; }
       .logo{ width: 48px; height: 48px; flex: 0 0 48px; }
+      .hero-wave{ height: 92px; }
+      .wa-float{ right: 12px; bottom: 12px; }
     }
 
-    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       *{ scroll-behavior:auto !important; transition:none !important; }
     }
   </style>
 
-  <!-- Structured data (Course) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -552,9 +613,9 @@
       <div class="hero-grid">
         <div class="hero-card">
           <div class="pad">
-            <div class="badge">
-              <span aria-hidden="true">👾</span>
-              <span><b>Code & Care 2026</b> • Scratch pentru un viitor mai bun</span>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:10px;">
+              <div class="badge"><span aria-hidden="true">👾</span> <span><b>Code & Care 2026</b> • Scratch pentru un viitor mai bun</span></div>
+              <div class="badge limit">⏳ Locuri limitate • înscriere 2026</div>
             </div>
 
             <h1>
@@ -580,9 +641,17 @@
               <div class="pill" role="listitem"><span class="dot" aria-hidden="true"></span><b>8–13 ani</b>&nbsp; • Scratch de la zero</div>
               <div class="pill" role="listitem"><span class="dot" aria-hidden="true"></span><b>100% interactiv</b>&nbsp; • proiecte & jocuri</div>
               <div class="pill" role="listitem"><span class="dot" aria-hidden="true"></span><b>Adjud</b>&nbsp; • Str. Al. I. Cuza 64</div>
-              <div class="pill" role="listitem"><span class="dot" aria-hidden="true"></span><b>Locuri limitate</b>&nbsp; • înscriere rapidă</div>
+              <div class="pill" role="listitem"><span class="dot" aria-hidden="true"></span><b>Fără echipamente speciale</b>&nbsp; • laptop + imaginație</div>
             </div>
           </div>
+
+          <!-- wave -->
+          <svg class="hero-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,64 C180,120 360,10 540,60 C720,110 900,30 1080,70 C1260,110 1350,120 1440,96 L1440,120 L0,120 Z"
+              fill="rgba(37,163,223,.14)"></path>
+            <path d="M0,78 C220,120 360,25 540,72 C720,120 900,48 1080,82 C1260,114 1350,120 1440,106 L1440,120 L0,120 Z"
+              fill="rgba(14,68,140,.10)"></path>
+          </svg>
         </div>
 
         <div class="side">
@@ -594,7 +663,7 @@
               obiceiuri sănătoase în online.
             </p>
 
-            <div class="kpis" aria-label="Punctigs key">
+            <div class="kpis" aria-label="Puncte cheie">
               <div class="kpi"><b>🧠 Logică</b><span>rezolvare de probleme</span></div>
               <div class="kpi"><b>🎨 Creativitate</b><span>storytelling & design</span></div>
               <div class="kpi"><b>❤️ Empatie</b><span>etică & siguranță</span></div>
@@ -780,6 +849,23 @@
       </div>
     </section>
 
+    <!-- FINAL CTA (premium) -->
+    <section aria-label="Call to Action Final">
+      <div class="cta-final">
+        <div>
+          <h3>Gata să-i oferim copilului un start bun în tehnologie?</h3>
+          <p>
+            Înscrierea se face rapid, iar copilul învață Scratch într-un mod practic și prietenos.
+            <b>Locurile sunt limitate</b> pentru 2026.
+          </p>
+        </div>
+        <div class="hero-cta" style="margin:0;">
+          <a class="btn primary" id="enrollBtnFinal" href="#">✅ Înscrie-te acum</a>
+          <a class="btn whatsapp" id="whBtnFinal" href="#">💬 Întreabă pe WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
       <div class="footer-card">
@@ -799,6 +885,15 @@
       </div>
     </footer>
   </main>
+
+  <!-- Floating WhatsApp -->
+  <a class="wa-float" id="waFloat" href="#" aria-label="Scrie pe WhatsApp">
+    <span class="wa-badge">💬</span>
+    <span>
+      Scrie pe WhatsApp
+      <span class="wa-sub">„Doresc info legat de curs”</span>
+    </span>
+  </a>
 
   <script>
     // ============================================================
@@ -849,12 +944,14 @@ Mulțumesc,
     const mailtoLink = makeMailto(TO_EMAIL, SUBJECT, BODY);
     const whatsappLink = makeWhatsApp(WHATSAPP_PHONE_INT, WHATSAPP_MESSAGE);
 
-    ["enrollBtnTop","enrollBtnHero","enrollBtnMid","enrollBtnBottom","enrollLinkFooter"].forEach(id=>{
+    // Apply mailto to all enroll CTAs
+    ["enrollBtnTop","enrollBtnHero","enrollBtnMid","enrollBtnBottom","enrollBtnFinal","enrollLinkFooter"].forEach(id=>{
       const el = document.getElementById(id);
       if(el) el.setAttribute("href", mailtoLink);
     });
 
-    ["whBtnTop","whBtnHero","whBtnMid","whBtnBottom","whLinkFooter"].forEach(id=>{
+    // Apply WhatsApp links
+    ["whBtnTop","whBtnHero","whBtnMid","whBtnBottom","whBtnFinal","whLinkFooter","waFloat"].forEach(id=>{
       const el = document.getElementById(id);
       if(el){
         el.setAttribute("href", whatsappLink);
