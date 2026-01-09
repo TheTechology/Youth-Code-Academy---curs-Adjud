@@ -1,3 +1,21 @@
+<!--
+  ============================================================
+  index.html — Youth Code Academy (Adjud)
+  Program: Code & Care 2026 – Scratch pentru un viitor mai bun
+  CROMATICĂ DIN LOGO (user provided):
+    - Brand Dark:   #0e448c
+    - Brand Light:  #25a3df
+    - Brand Mid:    #0c79bc
+    - Cream BG:     #fbf6e4
+    - Slate Text:   #394e68
+
+  Funcționalități:
+  - Logo rotund (RAW GitHub) centrat în cerc
+  - Buton „Înscrie-te” => mailto precompletat către thetechologyhub@gmail.com
+  - Buton WhatsApp => mesaj precompletat (Doresc info legat de curs…)
+  - Responsive (mobil/tablet/PC)
+  ============================================================
+-->
 <!doctype html>
 <html lang="ro">
 <head>
@@ -5,35 +23,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Code & Care 2026 • Scratch | Youth Code Academy – Adjud</title>
   <meta name="description" content="Curs Scratch (8–13 ani) în Adjud: programare vizuală, logică, creativitate și empatie digitală. Locuri limitate. Înscriere rapidă prin email + contact WhatsApp." />
-  <meta name="theme-color" content="#16a34a" />
+  <meta name="theme-color" content="#0e448c" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Code & Care 2026 – Scratch pentru un viitor mai bun" />
+  <meta property="og:description" content="Curs Scratch (8–13 ani) în Adjud: programare, creativitate, logică și impact social. Locuri limitate. Înscriere rapidă." />
+  <meta property="og:type" content="website" />
 
   <style>
-    /* =========================
-       PALETĂ NOUĂ (light, kids-friendly, premium)
-       - Verde plăcut + accente calde (fără neon)
-       ========================= */
+    /* ============================================================
+       CROMATICĂ LOGO (aplicată pe tot UI-ul)
+       ============================================================ */
     :root{
-      --bg: #f6fbf7;              /* fundal foarte deschis, ușor verde */
-      --bg2:#ffffff;              /* suprafețe */
-      --text:#0f172a;             /* slate foarte închis */
-      --muted:#475569;            /* text secundar */
-      --muted2:#64748b;
+      /* Brand (din logo) */
+      --brand:   #0e448c; /* principal */
+      --brand2:  #25a3df; /* secundar (luminos) */
+      --brand3:  #0c79bc; /* intermediar */
+      --cream:   #fbf6e4; /* fundal cald */
+      --slate:   #394e68; /* text/slate */
 
-      --brand:#16a34a;            /* verde principal */
-      --brand2:#22c55e;           /* verde secundar */
-      --accent:#0ea5e9;           /* albastru prietenos (pentru highlight) */
-      --warm:#f59e0b;             /* accent cald */
-      --line: rgba(15,23,42,.10); /* delimitări fine */
+      /* Neutre / Derivate */
+      --bg:      #fbf6e4;
+      --surface: rgba(255,255,255,.78);
+      --card:    rgba(255,255,255,.92);
+      --text:    #213446;      /* mai închis decât slate pentru contrast */
+      --muted:   #394e68;      /* slate din logo */
+      --muted2:  rgba(57,78,104,.85);
 
-      --card:#ffffff;
-      --cardSoft: rgba(22,163,74,.06);
+      --line:    rgba(57,78,104,.16);
+      --line2:   rgba(57,78,104,.10);
 
-      --shadow: 0 18px 40px rgba(15,23,42,.10);
-      --shadow2: 0 10px 24px rgba(15,23,42,.08);
+      --shadow:  0 18px 44px rgba(57,78,104,.15);
+      --shadow2: 0 10px 22px rgba(57,78,104,.12);
 
-      --radius: 20px;
-      --radius2: 14px;
-      --max: 1120px;
+      --radius:  20px;
+      --max:     1120px;
     }
 
     *{ box-sizing:border-box; }
@@ -43,21 +67,23 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color: var(--text);
       background:
-        radial-gradient(900px 520px at 10% 0%, rgba(34,197,94,.18), transparent 60%),
-        radial-gradient(900px 520px at 90% 10%, rgba(14,165,233,.14), transparent 62%),
-        radial-gradient(700px 420px at 50% 95%, rgba(245,158,11,.10), transparent 62%),
-        linear-gradient(180deg, #ffffff, var(--bg) 60%, #ffffff);
+        radial-gradient(900px 520px at 12% 0%, rgba(37,163,223,.20), transparent 60%),
+        radial-gradient(900px 520px at 88% 10%, rgba(14,68,140,.16), transparent 62%),
+        radial-gradient(720px 440px at 50% 95%, rgba(12,121,188,.14), transparent 62%),
+        linear-gradient(180deg, #fffaf0, var(--bg) 55%, #fffaf0);
       overflow-x:hidden;
     }
     a{ color:inherit; text-decoration:none; }
     .wrap{ max-width: var(--max); margin:0 auto; padding: 24px; }
 
-    /* Top bar */
+    /* =========================
+       Topbar
+       ========================= */
     .topbar{
       position: sticky; top:0; z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(255,255,255,.78);
-      border-bottom: 1px solid var(--line);
+      background: rgba(251,246,228,.82);
+      border-bottom: 1px solid var(--line2);
     }
     .topbar .row{
       display:flex; align-items:center; justify-content:space-between;
@@ -67,21 +93,45 @@
       margin: 0 auto;
     }
     .brand{
-      display:flex; align-items:center; gap:10px;
-      min-width: 220px;
+      display:flex; align-items:center; gap:12px;
+      min-width: 260px;
     }
+
+    /* Logo rotund cu imagine centrată */
     .logo{
-      width: 40px; height: 40px; border-radius: 14px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.75), transparent 45%),
-        linear-gradient(135deg, var(--brand2), var(--brand));
-      box-shadow: 0 12px 22px rgba(22,163,74,.18);
-      display:grid; place-items:center;
-      border: 1px solid rgba(22,163,74,.22);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+      border: 2px solid rgba(14,68,140,.28);
+      box-shadow: 0 14px 22px rgba(14,68,140,.16);
+      display: grid;
+      place-items: center;
+      flex: 0 0 52px;
     }
-    .logo span{ font-weight: 900; }
-    .brand strong{ font-size: 14.8px; line-height: 1.1; display:block; }
-    .brand small{ display:block; color: var(--muted2); font-weight: 600; }
+    .logo img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+    }
+
+    .brand strong{
+      font-size: 15px;
+      line-height: 1.1;
+      display:block;
+      letter-spacing:-.01em;
+      font-weight: 1000;
+      color: var(--brand);
+    }
+    .brand small{
+      display:block;
+      color: var(--muted);
+      font-weight: 800;
+    }
 
     .nav{
       display:flex; gap: 10px; flex-wrap:wrap;
@@ -94,50 +144,56 @@
       border-radius: 999px;
       border: 1px solid transparent;
       transition: all .2s ease;
+      font-weight: 900;
     }
     .nav a:hover{
-      color: var(--text);
-      border-color: var(--line);
-      background: rgba(15,23,42,.03);
+      color: var(--brand);
+      border-color: rgba(14,68,140,.18);
+      background: rgba(14,68,140,.05);
     }
 
     .actions{
       display:flex; align-items:center; gap:10px;
       justify-content:flex-end;
-      min-width: 220px;
+      min-width: 260px;
     }
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding: 12px 14px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: #fff;
+      border: 1px solid rgba(57,78,104,.16);
+      background: rgba(255,255,255,.86);
       color: var(--text);
-      font-weight: 800;
+      font-weight: 1000;
       font-size: 14px;
       cursor:pointer;
-      transition: transform .15s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease, filter .2s ease;
       box-shadow: var(--shadow2);
       white-space:nowrap;
     }
-    .btn:hover{ transform: translateY(-1px); background: rgba(15,23,42,.02); }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.95); }
     .btn:active{ transform: translateY(0px) scale(.99); }
 
+    /* Primary: gradient pe culorile din logo */
     .btn.primary{
       background: linear-gradient(135deg, var(--brand2), var(--brand));
-      border-color: rgba(22,163,74,.22);
-      box-shadow: 0 18px 34px rgba(22,163,74,.16);
-      color: #05240f;
+      border-color: rgba(14,68,140,.20);
+      box-shadow: 0 18px 34px rgba(14,68,140,.20);
+      color: #fff;
     }
     .btn.primary:hover{ filter: brightness(1.02); }
 
+    /* WhatsApp: păstrăm verdele WhatsApp, dar îl „îmblânzim” cu crema din logo */
     .btn.whatsapp{
-      background: rgba(37, 211, 102, .10);
-      border-color: rgba(37, 211, 102, .24);
+      background: linear-gradient(180deg, rgba(37,211,102,.14), rgba(37,211,102,.10));
+      border-color: rgba(37,211,102,.26);
+      color: var(--text);
     }
 
-    /* Hero */
+    /* =========================
+       Hero
+       ========================= */
     .hero{ padding: 30px 0 10px; }
     .hero-grid{
       display:grid;
@@ -147,8 +203,8 @@
     }
     .hero-card{
       border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.76));
+      border: 1px solid var(--line2);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.78));
       box-shadow: var(--shadow);
       overflow:hidden;
       position: relative;
@@ -159,27 +215,29 @@
       display:inline-flex; align-items:center; gap:10px;
       padding: 10px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(22,163,74,.18);
-      background: rgba(22,163,74,.07);
+      border: 1px solid rgba(14,68,140,.20);
+      background: rgba(14,68,140,.06);
       color: var(--muted);
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 1000;
       margin-bottom: 14px;
     }
-    .badge b{ color: var(--text); }
+    .badge b{ color: var(--brand); }
 
     h1{
       margin: 0 0 12px;
       font-size: clamp(28px, 3.4vw, 44px);
       letter-spacing: -0.02em;
       line-height: 1.06;
+      color: var(--text);
     }
     .lead{
       margin: 0 0 18px;
       color: var(--muted);
       font-size: 16px;
       line-height: 1.58;
-      max-width: 58ch;
+      max-width: 60ch;
+      font-weight: 650;
     }
 
     .hero-cta{
@@ -191,32 +249,30 @@
     .mini{
       display:flex; gap: 10px; flex-wrap:wrap;
       margin-top: 16px;
-      color: var(--muted2);
+      color: var(--muted);
       font-size: 13px;
     }
     .mini .pill{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.85);
+      border:1px solid var(--line2);
+      background: rgba(255,255,255,.88);
       padding: 10px 12px;
       border-radius: 999px;
       display:inline-flex;
       gap: 8px;
       align-items:center;
-      box-shadow: 0 8px 18px rgba(15,23,42,.05);
+      box-shadow: 0 8px 18px rgba(57,78,104,.08);
+      font-weight: 900;
     }
     .dot{
       width: 8px; height: 8px; border-radius: 99px;
-      background: var(--brand);
-      box-shadow: 0 0 0 3px rgba(22,163,74,.14);
+      background: var(--brand3);
+      box-shadow: 0 0 0 3px rgba(12,121,188,.16);
     }
 
-    .side{
-      display:grid;
-      gap: 12px;
-    }
+    .side{ display:grid; gap: 12px; }
     .side-card{
       border-radius: var(--radius);
-      border: 1px solid var(--line);
+      border: 1px solid var(--line2);
       background: rgba(255,255,255,.86);
       box-shadow: var(--shadow2);
       padding: 18px;
@@ -225,12 +281,15 @@
       margin: 0 0 10px;
       font-size: 16px;
       letter-spacing: -0.01em;
+      font-weight: 1000;
+      color: var(--brand);
     }
     .side-card p{
       margin: 0;
       color: var(--muted);
       font-size: 13.8px;
       line-height: 1.55;
+      font-weight: 650;
     }
     .kpis{
       display:grid;
@@ -239,16 +298,18 @@
       margin-top: 12px;
     }
     .kpi{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.88);
+      border:1px solid var(--line2);
+      background: rgba(255,255,255,.90);
       border-radius: 16px;
       padding: 12px;
-      box-shadow: 0 10px 18px rgba(15,23,42,.05);
+      box-shadow: 0 10px 18px rgba(57,78,104,.08);
     }
-    .kpi b{ display:block; font-size: 18px; }
-    .kpi span{ color: var(--muted2); font-size: 12.5px; }
+    .kpi b{ display:block; font-size: 18px; color: var(--brand); }
+    .kpi span{ color: var(--muted2); font-size: 12.5px; font-weight: 800; }
 
-    /* Sections */
+    /* =========================
+       Sections
+       ========================= */
     section{ padding: 18px 0; }
     .grid3{
       display:grid;
@@ -262,14 +323,16 @@
     }
     .card{
       border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.9);
+      border: 1px solid var(--line2);
+      background: rgba(255,255,255,.92);
       box-shadow: var(--shadow2);
       padding: 18px;
     }
     .card h2, .card h3{
       margin: 0 0 10px;
       letter-spacing: -0.01em;
+      font-weight: 1000;
+      color: var(--brand);
     }
     .card h2{ font-size: 18px; }
     .card h3{ font-size: 16px; }
@@ -278,6 +341,7 @@
       color: var(--muted);
       line-height: 1.6;
       font-size: 14px;
+      font-weight: 650;
     }
     .card .list{
       margin: 12px 0 0;
@@ -291,18 +355,18 @@
       display:flex; gap: 10px; align-items:flex-start;
       padding: 10px 12px;
       border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(22,163,74,.05);
+      border: 1px solid var(--line2);
+      background: rgba(12,121,188,.06);
     }
     .tick{
       width: 18px; height: 18px; flex: 0 0 18px;
       border-radius: 6px;
-      background: rgba(22,163,74,.14);
-      border: 1px solid rgba(22,163,74,.22);
+      background: rgba(14,68,140,.12);
+      border: 1px solid rgba(14,68,140,.20);
       display:grid; place-items:center;
       margin-top: 1px;
       color: var(--brand);
-      font-weight: 900;
+      font-weight: 1000;
       font-size: 12px;
       line-height: 1;
     }
@@ -316,6 +380,8 @@
       margin:0;
       font-size: 20px;
       letter-spacing:-0.01em;
+      color: var(--brand);
+      font-weight: 1100;
     }
     .section-title p{
       margin:0;
@@ -323,42 +389,44 @@
       font-size: 13.5px;
       max-width: 60ch;
       line-height: 1.45;
+      font-weight: 800;
     }
 
     /* Timeline */
-    .timeline{ display:grid; gap: 12px; }
+    .timeline{ display:grid; gap: 12px; margin-top: 10px; }
     .step{
       display:flex; gap: 12px;
       padding: 14px;
       border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 10px 18px rgba(15,23,42,.05);
+      border: 1px solid var(--line2);
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 10px 18px rgba(57,78,104,.07);
     }
     .num{
       width: 38px; height: 38px;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(34,197,94,.22), rgba(14,165,233,.18));
-      border: 1px solid rgba(15,23,42,.08);
+      background: linear-gradient(135deg, rgba(37,163,223,.28), rgba(14,68,140,.22));
+      border: 1px solid rgba(14,68,140,.14);
       display:grid; place-items:center;
-      font-weight: 950;
-      color: #0b2a16;
+      font-weight: 1100;
+      color: #0e2a44;
+      flex: 0 0 38px;
     }
-    .step h3{ margin: 0 0 6px; }
-    .step p{ margin: 0; color: var(--muted); font-size: 14px; line-height:1.55; }
+    .step h3{ margin: 0 0 6px; color: var(--brand); font-weight: 1000; }
+    .step p{ margin: 0; color: var(--muted); font-size: 14px; line-height:1.55; font-weight: 650; }
 
     /* FAQ */
     details{
-      border: 1px solid var(--line);
+      border: 1px solid var(--line2);
       border-radius: var(--radius);
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.94);
       padding: 14px 14px;
-      box-shadow: 0 10px 18px rgba(15,23,42,.05);
+      box-shadow: 0 10px 18px rgba(57,78,104,.07);
     }
     details summary{
       cursor:pointer;
-      font-weight: 900;
-      color: var(--text);
+      font-weight: 1100;
+      color: var(--brand);
       outline: none;
       list-style:none;
     }
@@ -368,14 +436,15 @@
       color: var(--muted);
       line-height: 1.6;
       font-size: 14px;
+      font-weight: 650;
     }
     .faq{ display:grid; gap: 10px; }
 
     /* Footer */
-    footer{ padding: 22px 0 34px; color: var(--muted2); font-size: 13px; }
+    footer{ padding: 22px 0 34px; color: var(--muted2); font-size: 13px; font-weight: 750; }
     .footer-card{
       border-radius: var(--radius);
-      border: 1px solid var(--line);
+      border: 1px solid var(--line2);
       background: rgba(255,255,255,.92);
       padding: 18px;
       display:flex;
@@ -385,18 +454,18 @@
       flex-wrap:wrap;
       box-shadow: var(--shadow2);
     }
-    .footer-card b{ color: var(--text); }
+    .footer-card b{ color: var(--brand); font-weight: 1100; }
     .small-links{ display:flex; gap: 10px; flex-wrap:wrap; }
     .small-links a{
       padding: 8px 10px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(22,163,74,.05);
-      color: var(--muted);
+      border: 1px solid rgba(14,68,140,.18);
+      background: rgba(14,68,140,.06);
+      color: var(--brand);
+      font-weight: 1000;
     }
     .small-links a:hover{
-      color: var(--text);
-      background: rgba(22,163,74,.08);
+      background: rgba(14,68,140,.10);
     }
 
     /* Responsive */
@@ -412,9 +481,16 @@
       .topbar .row{ padding: 12px 16px; }
       .wrap{ padding: 18px; }
       .hero-card .pad{ padding: 20px; }
+      .logo{ width: 48px; height: 48px; flex: 0 0 48px; }
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; transition:none !important; }
     }
   </style>
 
+  <!-- Structured data (Course) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -437,10 +513,17 @@
 </head>
 
 <body>
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="row">
       <a class="brand" href="#acasa" aria-label="Mergi la începutul paginii">
-        <div class="logo" aria-hidden="true"><span>👾</span></div>
+        <div class="logo" aria-hidden="true">
+          <img
+            src="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/27e0875082dc9525492663af37577084dcf9b816/logo%20program%20-%20Youth%20Code%20Academy.jpg"
+            alt="Logo Youth Code Academy"
+            loading="lazy"
+          />
+        </div>
         <div>
           <strong>Youth Code Academy</strong>
           <small>Adjud • Tech for Social Impact</small>
@@ -464,16 +547,21 @@
   </div>
 
   <main class="wrap" id="acasa">
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-card">
           <div class="pad">
             <div class="badge">
-              <span aria-hidden="true">🐯</span>
+              <span aria-hidden="true">👾</span>
               <span><b>Code & Care 2026</b> • Scratch pentru un viitor mai bun</span>
             </div>
 
-            <h1>Transformăm pasiunea pentru jocuri în <span style="color:var(--brand)">învățare</span> și <span style="color:var(--accent)">încredere</span>.</h1>
+            <h1>
+              Transformăm pasiunea pentru jocuri în
+              <span style="color:var(--brand3)">învățare</span> și
+              <span style="color:var(--brand)">încredere</span>.
+            </h1>
 
             <p class="lead">
               În 2026, copiii și tinerii din Adjud au nevoie de mai mult decât acces la tehnologie.
@@ -506,7 +594,7 @@
               obiceiuri sănătoase în online.
             </p>
 
-            <div class="kpis" aria-label="Puncte cheie">
+            <div class="kpis" aria-label="Punctigs key">
               <div class="kpi"><b>🧠 Logică</b><span>rezolvare de probleme</span></div>
               <div class="kpi"><b>🎨 Creativitate</b><span>storytelling & design</span></div>
               <div class="kpi"><b>❤️ Empatie</b><span>etică & siguranță</span></div>
@@ -529,6 +617,7 @@
       </div>
     </section>
 
+    <!-- BENEFICII -->
     <section id="beneficii">
       <div class="section-title">
         <h2>Ce învață copilul tău</h2>
@@ -568,6 +657,7 @@
       </div>
     </section>
 
+    <!-- PROGRAMA -->
     <section id="programa">
       <div class="section-title">
         <h2>Programă pe pași</h2>
@@ -611,9 +701,9 @@
             <li class="li"><span class="tick">✓</span><span><b>Locuri:</b> limitate pentru 2026</span></li>
           </ul>
 
-          <div style="margin-top:14px; padding:14px; border-radius:var(--radius); border:1px solid var(--line); background: var(--cardSoft);">
-            <p style="margin:0; font-weight:900;">🎓 Înscriere rapidă</p>
-            <p style="margin:8px 0 0; color: var(--muted); font-size: 13.8px; line-height:1.55;">
+          <div style="margin-top:14px; padding:14px; border-radius:var(--radius); border:1px solid var(--line2); background: rgba(14,68,140,.05);">
+            <p style="margin:0; font-weight:1100; color:var(--brand);">🎓 Înscriere rapidă</p>
+            <p style="margin:8px 0 0; color: var(--muted); font-size: 13.8px; line-height:1.55; font-weight:650;">
               Apasă „Înscrie-te” și se deschide automat emailul tău cu un formular precompletat.
               Completezi datele și trimiți.
             </p>
@@ -626,6 +716,7 @@
       </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq">
       <div class="section-title">
         <h2>Întrebări frecvente</h2>
@@ -652,6 +743,7 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
       <div class="section-title">
         <h2>Înscriere & Contact</h2>
@@ -666,6 +758,9 @@
             <a class="btn primary" id="enrollBtnBottom" href="#">🏆 Înscrie-te la curs</a>
             <a class="btn" href="#acasa">⬆️ Înapoi sus</a>
           </div>
+          <p style="margin-top:12px; color:var(--muted2); font-size:13px; line-height:1.5; font-weight:750;">
+            Notă: dacă nu se deschide clientul de email, scrie pe WhatsApp și îți trimitem pașii rapid.
+          </p>
         </div>
 
         <div class="card">
@@ -674,17 +769,18 @@
           <div class="hero-cta" style="margin-top:14px;">
             <a class="btn whatsapp" id="whBtnBottom" href="#">📞 WhatsApp 0772 246 337</a>
           </div>
-          <div style="margin-top:14px; border:1px solid var(--line); background: rgba(14,165,233,.07); border-radius: var(--radius); padding: 14px;">
-            <p style="margin:0; font-weight:900;">📍 Locație</p>
-            <p style="margin:8px 0 0; color: var(--muted); line-height:1.55;">
+          <div style="margin-top:14px; border:1px solid var(--line2); background: rgba(37,163,223,.08); border-radius: var(--radius); padding: 14px;">
+            <p style="margin:0; font-weight:1100; color:var(--brand);">📍 Locație</p>
+            <p style="margin:8px 0 0; color: var(--muted); line-height:1.55; font-weight:650;">
               Strada Alexandru Ioan Cuza nr. 64, Adjud<br/>
-              <span style="color: var(--muted2);">Youth Code Academy – Tech for Social Impact</span>
+              <span style="color: var(--muted2); font-weight:800;">Youth Code Academy – Tech for Social Impact</span>
             </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
       <div class="footer-card">
         <div>
@@ -705,6 +801,9 @@
   </main>
 
   <script>
+    // ============================================================
+    // Contact actions (mailto + WhatsApp)
+    // ============================================================
     const TO_EMAIL = "thetechologyhub@gmail.com";
     const WHATSAPP_PHONE_INT = "40772246337"; // 0772246337 -> format internațional fără +
     const SUBJECT = "Înscriere – Code & Care 2026 (Scratch) | Youth Code Academy – Adjud";
