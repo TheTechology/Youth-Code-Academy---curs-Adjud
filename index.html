@@ -13,18 +13,15 @@
 
   Include:
   ✅ Topbar sticky (meniu rămâne la scroll)
-  ✅ SEO (title/description/robots/canonical/OG/Twitter + geo meta)
+  ✅ SEO: title/description/robots/author/theme-color + geo meta
+  ✅ Canonical + og:url setate automat din CANONICAL_URL (JS)
+  ✅ OG/Twitter meta
   ✅ JSON-LD: Course + EducationalOrganization + Service + Person (trainer)
   ✅ Logo rotund (RAW GitHub) centrat în cerc
-  ✅ Hero wave subtil (premium)
-  ✅ CTA-uri multiple + CTA final (conversion)
+  ✅ CTA email (mailto precompletat) către thetechologyhub@gmail.com
   ✅ WhatsApp buttons + WhatsApp floating button (mesaj precompletat)
-  ✅ Înscriere prin mailto precompletat către thetechologyhub@gmail.com
-  ✅ Secțiune Formator cu imagine (RAW GitHub) + descriere + buton CV
-
-  IMPORTANT:
-  - Setează URL-ul paginii tale în: CANONICAL_URL (mai jos, în script).
-    Acesta va popula automat canonical + og:url.
+  ✅ Secțiune Formator cu imagine (RAW GitHub) responsive premium pe mobil
+  ✅ Buton către CV (mariandumitrucv.netlify.app)
   ============================================================
 -->
 <!doctype html>
@@ -40,7 +37,7 @@
   <meta name="author" content="Youth Code Academy – Tech for Social Impact" />
   <meta name="theme-color" content="#0e448c" />
 
-  <!-- Canonical + OG URL vor fi setate din JS (fără să schimbe UI-ul) -->
+  <!-- Canonical (se setează automat din CANONICAL_URL în JS) -->
   <link id="canonicalLink" rel="canonical" href="https://example.com/" />
 
   <!-- Open Graph / Social -->
@@ -458,29 +455,40 @@
     .step h3{ margin: 0 0 6px; color: var(--brand); font-weight: 1000; }
     .step p{ margin: 0; color: var(--muted); font-size: 14px; line-height:1.55; font-weight: 650; }
 
-    /* Trainer section */
+    /* Trainer section (premium pe mobil) */
     .trainer{
       display:grid;
       grid-template-columns: 180px 1fr;
       gap: 16px;
       align-items: start;
     }
+
     .trainer-photo{
       width: 180px;
       height: 180px;
       border-radius: 22px;
-      overflow:hidden;
+      overflow: hidden;
       border: 1px solid rgba(14,68,140,.18);
       background: rgba(255,255,255,.95);
       box-shadow: 0 18px 36px rgba(14,68,140,.16);
+      position: relative;
     }
     .trainer-photo img{
       width:100%;
       height:100%;
       object-fit: cover;
-      object-position: center;
+      object-position: 50% 20%; /* focus mai sus: față/ochi */
       display:block;
     }
+    /* overlay subtil (premium) */
+    .trainer-photo::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(14,68,140,.05), rgba(14,68,140,.12));
+      pointer-events:none;
+    }
+
     .trainer h3{
       margin: 0 0 6px;
       color: var(--brand);
@@ -495,6 +503,7 @@
       color: var(--muted);
       margin-bottom: 10px;
       font-size: 13.5px;
+      flex-wrap: wrap;
     }
     .trainer .role .chip{
       padding: 8px 10px;
@@ -646,10 +655,24 @@
       .brand{ min-width: unset; }
       .nav{ display:none; }
     }
+
+    /* Trainer — mobile premium framing */
     @media (max-width: 860px){
-      .trainer{ grid-template-columns: 1fr; }
-      .trainer-photo{ width: 100%; height: 220px; border-radius: 22px; }
+      .trainer{
+        grid-template-columns: 1fr;
+      }
+      .trainer-photo{
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 10; /* profi pe mobil, tip cover */
+        border-radius: 18px;
+      }
+      .trainer-photo img{
+        height: 100%;
+        object-position: 50% 18%;
+      }
     }
+
     @media (max-width: 820px){
       .grid3{ grid-template-columns: 1fr; }
       .grid2{ grid-template-columns: 1fr; }
@@ -976,10 +999,11 @@
         <div class="trainer">
           <div class="trainer-photo" aria-hidden="true">
             <img
-              src="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/1e5cf4fcd1bd28a52e49e79792387e6878007c0b/505543359_10229927869287865_151240383691569297_n.jpg"
-              alt="Marian Dumitru – Formator Youth Code Academy"
-              loading="lazy"
-            />
+  src="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/61cd001ba9589f34ccd9ad12bc94db361462a31e/Formator%20Marian%20DUMITRU.jpg"
+  alt="Marian Dumitru – Formator Youth Code Academy"
+  loading="lazy"
+/>
+
           </div>
 
           <div>
