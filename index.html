@@ -2,13 +2,29 @@
   ============================================================
   index.html — Youth Code Academy (Adjud)
   Program: Code & Care 2026 – Scratch pentru un viitor mai bun
-  CROMATICĂ DIN LOGO:
-    #0e448c (brand), #25a3df (light), #0c79bc (mid), #fbf6e4 (cream), #394e68 (slate)
-
   Hosting: Netlify / GitHub Pages
-  - Logo rotund (RAW GitHub)
-  - Înscriere: mailto precompletat către thetechologyhub@gmail.com
-  - Contact: WhatsApp precompletat + buton flotant
+
+  CROMATICĂ DIN LOGO (user provided):
+    - Brand Dark:   #0e448c
+    - Brand Light:  #25a3df
+    - Brand Mid:    #0c79bc
+    - Cream BG:     #fbf6e4
+    - Slate Text:   #394e68
+
+  Include:
+  ✅ Topbar sticky (meniu rămâne la scroll)
+  ✅ SEO (title/description/robots/canonical/OG/Twitter + geo meta)
+  ✅ JSON-LD: Course + EducationalOrganization + Service + Person (trainer)
+  ✅ Logo rotund (RAW GitHub) centrat în cerc
+  ✅ Hero wave subtil (premium)
+  ✅ CTA-uri multiple + CTA final (conversion)
+  ✅ WhatsApp buttons + WhatsApp floating button (mesaj precompletat)
+  ✅ Înscriere prin mailto precompletat către thetechologyhub@gmail.com
+  ✅ Secțiune Formator cu imagine (RAW GitHub) + descriere + buton CV
+
+  IMPORTANT:
+  - Setează URL-ul paginii tale în: CANONICAL_URL (mai jos, în script).
+    Acesta va popula automat canonical + og:url.
   ============================================================
 -->
 <!doctype html>
@@ -16,14 +32,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Code & Care 2026 • Scratch | Youth Code Academy – Adjud</title>
-  <meta name="description" content="Curs Scratch (8–13 ani) în Adjud: programare vizuală, logică, creativitate și empatie digitală. Locuri limitate. Înscriere rapidă prin email + contact WhatsApp." />
+
+  <!-- SEO (fără impact vizual) -->
+  <title>Curs IT Adjud pentru copii (8–13) • Scratch | Youth Code Academy</title>
+  <meta name="description" content="Curs IT în Adjud pentru copii (8–13 ani): Scratch, logică, creativitate și proiecte interactive. Youth Code Academy – cursuri copii Adjud, cursuri tineri Adjud. Înscriere rapidă." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="author" content="Youth Code Academy – Tech for Social Impact" />
   <meta name="theme-color" content="#0e448c" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Code & Care 2026 – Scratch pentru un viitor mai bun" />
-  <meta property="og:description" content="Curs Scratch (8–13 ani) în Adjud: programare, creativitate, logică și impact social. Locuri limitate. Înscriere rapidă." />
+  <!-- Canonical + OG URL vor fi setate din JS (fără să schimbe UI-ul) -->
+  <link id="canonicalLink" rel="canonical" href="https://example.com/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:locale" content="ro_RO" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Youth Code Academy – Adjud" />
+  <meta property="og:title" content="Curs IT Adjud • Cursuri copii și tineri | Code & Care 2026 (Scratch)" />
+  <meta property="og:description" content="Cursuri IT pentru copii (8–13 ani) în Adjud: Scratch, logică, creativitate și proiecte interactive. Locuri limitate." />
+  <meta property="og:url" id="ogUrl" content="https://example.com/" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/27e0875082dc9525492663af37577084dcf9b816/logo%20program%20-%20Youth%20Code%20Academy.jpg" />
+  <meta property="og:image:alt" content="Youth Code Academy – curs IT Adjud pentru copii și tineri" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Curs IT Adjud • Scratch pentru copii | Youth Code Academy" />
+  <meta name="twitter:description" content="Cursuri copii Adjud: Scratch, logică, creativitate. Înscriere rapidă." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/27e0875082dc9525492663af37577084dcf9b816/logo%20program%20-%20Youth%20Code%20Academy.jpg" />
+
+  <!-- Geo -->
+  <meta name="geo.region" content="RO-VN" />
+  <meta name="geo.placename" content="Adjud" />
 
   <style>
     :root{
@@ -65,9 +103,12 @@
     a{ color:inherit; text-decoration:none; }
     .wrap{ max-width: var(--max); margin:0 auto; padding: 24px; }
 
-    /* Topbar */
+    /* Topbar (sticky) */
     .topbar{
-      position: sticky; top:0; z-index: 20;
+      position: sticky;
+      top:0;
+      z-index: 9999;
+      isolation: isolate;
       backdrop-filter: blur(10px);
       background: rgba(251,246,228,.86);
       border-bottom: 1px solid var(--line2);
@@ -174,6 +215,12 @@
       color: var(--text);
     }
 
+    .btn.ghost{
+      background: rgba(14,68,140,.06);
+      border-color: rgba(14,68,140,.16);
+      color: var(--brand);
+    }
+
     /* Hero */
     .hero{ padding: 30px 0 10px; position:relative; }
     .hero-grid{
@@ -193,7 +240,6 @@
     }
     .hero-card .pad{ padding: 28px; }
 
-    /* wave (subtil, cromatică logo) */
     .hero-wave{
       position:absolute;
       left:0; right:0;
@@ -220,6 +266,7 @@
       border-color: rgba(12,121,188,.22);
       background: rgba(37,163,223,.10);
       color: var(--brand);
+      margin-bottom: 0;
     }
 
     h1{
@@ -411,6 +458,68 @@
     .step h3{ margin: 0 0 6px; color: var(--brand); font-weight: 1000; }
     .step p{ margin: 0; color: var(--muted); font-size: 14px; line-height:1.55; font-weight: 650; }
 
+    /* Trainer section */
+    .trainer{
+      display:grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .trainer-photo{
+      width: 180px;
+      height: 180px;
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid rgba(14,68,140,.18);
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 18px 36px rgba(14,68,140,.16);
+    }
+    .trainer-photo img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      object-position: center;
+      display:block;
+    }
+    .trainer h3{
+      margin: 0 0 6px;
+      color: var(--brand);
+      font-weight: 1100;
+      letter-spacing:-.01em;
+    }
+    .trainer .role{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-weight: 950;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-size: 13.5px;
+    }
+    .trainer .role .chip{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(12,121,188,.20);
+      background: rgba(37,163,223,.10);
+      color: var(--brand);
+      font-weight: 1100;
+      font-size: 12.5px;
+      white-space:nowrap;
+    }
+    .trainer p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 650;
+      line-height: 1.62;
+      font-size: 14px;
+    }
+    .trainer-actions{
+      margin-top: 12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
     /* FAQ */
     details{
       border: 1px solid var(--line2);
@@ -436,7 +545,7 @@
     }
     .faq{ display:grid; gap: 10px; }
 
-    /* Strong final CTA */
+    /* Final CTA */
     .cta-final{
       border-radius: var(--radius);
       border: 1px solid rgba(14,68,140,.18);
@@ -497,7 +606,7 @@
       position: fixed;
       right: 16px;
       bottom: 16px;
-      z-index: 50;
+      z-index: 99999;
       display:flex;
       align-items:center;
       gap: 10px;
@@ -530,11 +639,16 @@
       margin-top: 2px;
     }
 
+    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{ grid-template-columns: 1fr; }
       .actions{ min-width: unset; }
       .brand{ min-width: unset; }
       .nav{ display:none; }
+    }
+    @media (max-width: 860px){
+      .trainer{ grid-template-columns: 1fr; }
+      .trainer-photo{ width: 100%; height: 220px; border-radius: 22px; }
     }
     @media (max-width: 820px){
       .grid3{ grid-template-columns: 1fr; }
@@ -552,7 +666,8 @@
     }
   </style>
 
-  <script type="application/ld+json">
+  <!-- JSON-LD: Course -->
+  <script type="application/ld+json" id="jsonldCourse">
   {
     "@context":"https://schema.org",
     "@type":"Course",
@@ -566,8 +681,72 @@
         "@type":"PostalAddress",
         "streetAddress":"Strada Alexandru Ioan Cuza nr. 64",
         "addressLocality":"Adjud",
+        "addressRegion":"Vrancea",
         "addressCountry":"RO"
       }
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: Org + Service (keywords) -->
+  <script type="application/ld+json" id="jsonldOrgService">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"EducationalOrganization",
+        "@id":"https://example.com/#org",
+        "name":"Youth Code Academy – Tech for Social Impact",
+        "areaServed":"Adjud, Vrancea, România",
+        "address":{
+          "@type":"PostalAddress",
+          "streetAddress":"Strada Alexandru Ioan Cuza nr. 64",
+          "addressLocality":"Adjud",
+          "addressRegion":"Vrancea",
+          "addressCountry":"RO"
+        },
+        "email":"thetechologyhub@gmail.com",
+        "logo":"https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/27e0875082dc9525492663af37577084dcf9b816/logo%20program%20-%20Youth%20Code%20Academy.jpg"
+      },
+      {
+        "@type":"Service",
+        "@id":"https://example.com/#service",
+        "serviceType":"Curs IT Adjud",
+        "name":"Curs IT Adjud – Scratch pentru copii și tineri",
+        "provider":{"@id":"https://example.com/#org"},
+        "areaServed":"Adjud",
+        "audience":{
+          "@type":"Audience",
+          "audienceType":"Copii 8–13 și tineri (începători)"
+        },
+        "keywords":[
+          "curs it Adjud",
+          "cursuri copii Adjud",
+          "cursuri tineri Adjud",
+          "Scratch Adjud",
+          "programare copii Adjud",
+          "curs programare Adjud"
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Person (Formator) -->
+  <script type="application/ld+json" id="jsonldPerson">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Marian Dumitru",
+    "jobTitle":"Formator Scratch • UX/UI Designer • Junior Frontend Developer",
+    "url":"https://mariandumitrucv.netlify.app/",
+    "affiliation":{
+      "@type":"Organization",
+      "name":"Youth Code Academy – Tech for Social Impact"
+    },
+    "worksFor":{
+      "@type":"Organization",
+      "name":"Youth Code Academy – Tech for Social Impact"
     }
   }
   </script>
@@ -595,6 +774,7 @@
         <a href="#despre">Despre</a>
         <a href="#beneficii">Ce învață</a>
         <a href="#programa">Programă</a>
+        <a href="#formator">Formator</a>
         <a href="#inscriere">Înscriere</a>
         <a href="#faq">Întrebări</a>
         <a href="#contact">Contact</a>
@@ -785,6 +965,49 @@
       </div>
     </section>
 
+    <!-- FORMATOR -->
+    <section id="formator" aria-label="Formatorul cursului">
+      <div class="section-title">
+        <h2>Formator</h2>
+        <p>Transparență și încredere: cine ghidează copiii în această aventură digitală.</p>
+      </div>
+
+      <div class="card">
+        <div class="trainer">
+          <div class="trainer-photo" aria-hidden="true">
+            <img
+              src="https://raw.githubusercontent.com/TheTechology/Youth-Code-Academy---curs-Adjud/1e5cf4fcd1bd28a52e49e79792387e6878007c0b/505543359_10229927869287865_151240383691569297_n.jpg"
+              alt="Marian Dumitru – Formator Youth Code Academy"
+              loading="lazy"
+            />
+          </div>
+
+          <div>
+            <h3>Marian Dumitru</h3>
+            <div class="role">
+              <span class="chip">Formator Scratch</span>
+              <span class="chip">UX/UI Designer</span>
+              <span class="chip">Junior Frontend Developer</span>
+            </div>
+
+            <p>
+              Marian Dumitru este formator și creator de programe educaționale în domeniul tehnologiei, cu focus pe
+              <b>învățare practică</b>, <b>creativitate</b> și <b>dezvoltarea gândirii critice</b>.
+              În cadrul Youth Code Academy, ghidează copiii pas cu pas în Scratch, transformând ideile lor în
+              animații, jocuri și proiecte cu sens, într-un mediu prietenos, sigur și motivant.
+              Abordarea sa combină pedagogia modernă cu designul și dezvoltarea web, astfel încât fiecare copil să
+              învețe nu doar „cum se face”, ci și <b>de ce contează</b> tehnologia în viața reală și în comunitate.
+            </p>
+
+            <div class="trainer-actions">
+              <a class="btn primary" href="https://mariandumitrucv.netlify.app/" target="_blank" rel="noopener">📄 Vezi CV-ul complet</a>
+              <a class="btn ghost" id="whBtnTrainer" href="#">💬 Întreabă direct pe WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- FAQ -->
     <section id="faq">
       <div class="section-title">
@@ -849,7 +1072,7 @@
       </div>
     </section>
 
-    <!-- FINAL CTA (premium) -->
+    <!-- FINAL CTA -->
     <section aria-label="Call to Action Final">
       <div class="cta-final">
         <div>
@@ -896,6 +1119,33 @@
   </a>
 
   <script>
+    // ============================================================
+    // IMPORTANT: setează URL-ul final al paginii (Netlify/GitHub Pages)
+    // Exemplu Netlify: https://youthcodeacademy-adjud.netlify.app/
+    // Exemplu GitHub Pages: https://username.github.io/repo/
+    // ============================================================
+    const CANONICAL_URL = "https://example.com/"; // <-- schimbă asta
+
+    // Set canonical + og:url (fără impact vizual)
+    (function setUrls(){
+      const canonical = document.getElementById("canonicalLink");
+      const og = document.getElementById("ogUrl");
+      if(canonical) canonical.setAttribute("href", CANONICAL_URL);
+      if(og) og.setAttribute("content", CANONICAL_URL);
+
+      // Update JSON-LD IDs to real URL (org/service)
+      try{
+        const orgServiceEl = document.getElementById("jsonldOrgService");
+        if(orgServiceEl){
+          const data = JSON.parse(orgServiceEl.textContent);
+          data["@graph"][0]["@id"] = CANONICAL_URL + "#org";
+          data["@graph"][1]["@id"] = CANONICAL_URL + "#service";
+          data["@graph"][1]["provider"] = {"@id": CANONICAL_URL + "#org"};
+          orgServiceEl.textContent = JSON.stringify(data);
+        }
+      }catch(e){}
+    })();
+
     // ============================================================
     // Contact actions (mailto + WhatsApp)
     // ============================================================
@@ -951,7 +1201,7 @@ Mulțumesc,
     });
 
     // Apply WhatsApp links
-    ["whBtnTop","whBtnHero","whBtnMid","whBtnBottom","whBtnFinal","whLinkFooter","waFloat"].forEach(id=>{
+    ["whBtnTop","whBtnHero","whBtnMid","whBtnBottom","whBtnFinal","whLinkFooter","waFloat","whBtnTrainer"].forEach(id=>{
       const el = document.getElementById(id);
       if(el){
         el.setAttribute("href", whatsappLink);
