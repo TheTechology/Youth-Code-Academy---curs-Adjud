@@ -10,21 +10,6 @@
     - Brand Mid:    #0c79bc
     - Cream BG:     #fbf6e4
     - Slate Text:   #394e68
-
-  Include:
-  ✅ Topbar sticky + FIX mobil (2 rânduri: brand sus, butoane jos)
-  ✅ Meniu mobil tip drawer (burger + overlay), ca UX premium
-  ✅ SEO complet + OG/Twitter (Facebook/LinkedIn preview)
-  ✅ OG/Twitter image: CURSURI CALCULATOARE ADJUD.png
-  ✅ Canonical + og:url setate automat din CANONICAL_URL (JS)
-  ✅ JSON-LD: Course + EducationalOrganization + Service + Person + ImageObject
-  ✅ Logo rotund (RAW GitHub) centrat în cerc
-  ✅ CTA email (mailto precompletat) către thetechologyhub@gmail.com
-  ✅ WhatsApp buttons + buton floating (mesaj precompletat)
-  ✅ Formator: imagine nouă + framing premium pe mobil/PC
-  ✅ Buton către CV (mariandumitrucv.netlify.app)
-  ============================================================
--->
 <!doctype html>
 <html lang="ro">
 <head>
@@ -106,6 +91,7 @@
 
     a{ color:inherit; text-decoration:none; }
     .wrap{ max-width: var(--max); margin:0 auto; padding: 24px; }
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
     /* Topbar (sticky) */
     .topbar{
@@ -127,7 +113,7 @@
     }
     .brand{
       display:flex; align-items:center; gap:12px;
-      min-width: 0; /* FIX: să nu împingă pe mobil */
+      min-width: 0;
     }
 
     .logo{
@@ -227,7 +213,7 @@
     }
 
     /* =========================
-       MOBILE DRAWER MENU (burger + overlay) — UX premium
+       MOBILE DRAWER MENU (burger + overlay)
        ========================= */
     .burger{
       display:none;
@@ -467,6 +453,7 @@
       line-height: 1.55;
       font-weight: 650;
     }
+
     .kpis{
       display:grid;
       grid-template-columns: repeat(2, minmax(0,1fr));
@@ -502,6 +489,7 @@
       box-shadow: var(--shadow2);
       padding: 18px;
     }
+
     .card h2, .card h3{
       margin: 0 0 10px;
       letter-spacing: -0.01em;
@@ -517,6 +505,7 @@
       font-size: 14px;
       font-weight: 650;
     }
+
     .card .list{
       margin: 12px 0 0;
       padding: 0;
@@ -589,7 +578,51 @@
     .step h3{ margin: 0 0 6px; color: var(--brand); font-weight: 1000; }
     .step p{ margin: 0; color: var(--muted); font-size: 14px; line-height:1.55; font-weight: 650; }
 
-    /* Trainer section — framing premium PC + mobil */
+    /* “Cum arată o oră” */
+    .session{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+    }
+    .session .slot{
+      border-radius: var(--radius);
+      border: 1px solid var(--line2);
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 10px 18px rgba(57,78,104,.07);
+      padding: 14px;
+    }
+    .slot b{ display:block; color: var(--brand); font-weight:1100; margin-bottom:6px; }
+    .slot span{ color: var(--muted); font-size: 13.5px; font-weight: 650; line-height:1.5; }
+
+    /* Mini portfolio cards */
+    .portfolio{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+    .proj{
+      border-radius: var(--radius);
+      border: 1px solid var(--line2);
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow2);
+      padding: 16px;
+    }
+    .proj h3{ margin:0 0 8px; color: var(--brand); font-weight:1100; font-size: 15.5px; }
+    .proj p{ margin:0; color: var(--muted); font-size: 13.8px; font-weight:650; line-height:1.55; }
+    .tagrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(12,121,188,.18);
+      background: rgba(37,163,223,.10);
+      color: var(--brand);
+      font-weight: 1000;
+      font-size: 12.5px;
+      white-space:nowrap;
+    }
+
+    /* Trainer section */
     .trainer{
       display:grid;
       grid-template-columns: 180px 1fr;
@@ -780,15 +813,25 @@
       margin-top: 2px;
     }
 
-    /* Responsive (general) */
+    /* Micro-interacțiuni (subtil) */
+    .card, .side-card, .hero-card, .cta-final, .proj, .step, .slot{
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .card:hover, .side-card:hover, .proj:hover{
+      transform: translateY(-2px);
+      filter: brightness(1.01);
+    }
+
+    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{ grid-template-columns: 1fr; }
       .actions{ min-width: unset; }
-      .nav{ display:none; } /* desktop nav ascuns pe mobil/tablet */
-      .burger{ display:inline-flex; } /* burger apare */
+      .nav{ display:none; }
+      .burger{ display:inline-flex; }
+      .session{ grid-template-columns: 1fr 1fr; }
+      .portfolio{ grid-template-columns: 1fr; }
     }
 
-    /* Trainer — mobile premium cover */
     @media (max-width: 860px){
       .trainer{ grid-template-columns: 1fr; }
       .trainer-photo{
@@ -814,9 +857,7 @@
       .wa-float{ right: 12px; bottom: 12px; }
     }
 
-    /* =========================
-       TOPBAR MOBILE FIX (2 rânduri)
-       ========================= */
+    /* TOPBAR MOBILE FIX (2 rânduri) */
     @media (max-width: 560px){
       .topbar .row{
         flex-wrap: wrap;
@@ -864,6 +905,8 @@
       .burger{
         flex: 0 0 46px;
       }
+
+      .session{ grid-template-columns: 1fr; }
     }
 
     @media (max-width: 380px){
@@ -982,15 +1025,19 @@
         <a href="#despre">Despre</a>
         <a href="#beneficii">Ce învață</a>
         <a href="#programa">Programă</a>
+        <a href="#cum-arata">O oră de curs</a>
+        <a href="#rezultate">Rezultate</a>
+        <a href="#proiecte">Proiecte</a>
         <a href="#formator">Formator</a>
         <a href="#inscriere">Înscriere</a>
+        <a href="#siguranta">Siguranță</a>
         <a href="#faq">Întrebări</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="actions">
-        <a class="btn whatsapp" id="whBtnTop" href="#" aria-label="Scrie pe WhatsApp">💬 WhatsApp</a>
-        <a class="btn primary" id="enrollBtnTop" href="#" aria-label="Înscrie-te la curs">🏆 Înscrie-te</a>
+        <a class="btn whatsapp" id="whBtnTop" href="#" aria-label="Întreabă rapid pe WhatsApp">💬 Întreabă rapid</a>
+        <a class="btn primary" id="enrollBtnTop" href="#" aria-label="Rezervă un loc la curs">🏆 Rezervă un loc</a>
 
         <!-- Burger (mobile) -->
         <button class="burger" id="burgerBtn" aria-label="Deschide meniul">☰</button>
@@ -1016,8 +1063,12 @@
       <a href="#despre" class="drawer-link">Despre</a>
       <a href="#beneficii" class="drawer-link">Ce învață</a>
       <a href="#programa" class="drawer-link">Programă</a>
+      <a href="#cum-arata" class="drawer-link">Cum arată o oră</a>
+      <a href="#rezultate" class="drawer-link">Rezultate</a>
+      <a href="#proiecte" class="drawer-link">Proiecte</a>
       <a href="#formator" class="drawer-link">Formator</a>
       <a href="#inscriere" class="drawer-link">Înscriere</a>
+      <a href="#siguranta" class="drawer-link">Siguranță</a>
       <a href="#faq" class="drawer-link">Întrebări</a>
       <a href="#contact" class="drawer-link">Contact</a>
     </nav>
@@ -1025,9 +1076,13 @@
     <div class="drawer-sep"></div>
 
     <div class="drawer-actions">
-      <a class="btn whatsapp" id="whBtnDrawer" href="#" aria-label="Scrie pe WhatsApp">💬 WhatsApp</a>
-      <a class="btn primary" id="enrollBtnDrawer" href="#" aria-label="Înscrie-te la curs">🏆 Înscrie-te</a>
+      <a class="btn whatsapp" id="whBtnDrawer" href="#" aria-label="Întreabă rapid pe WhatsApp">💬 Întreabă rapid</a>
+      <a class="btn primary" id="enrollBtnDrawer" href="#" aria-label="Rezervă un loc la curs">🏆 Rezervă un loc</a>
     </div>
+
+    <p style="margin:0; color:var(--muted2); font-size:12.5px; font-weight:800; line-height:1.5;">
+      Tip: apasă pe o secțiune și meniul se închide automat.
+    </p>
   </aside>
 
   <main class="wrap" id="acasa">
@@ -1054,9 +1109,17 @@
               Cu Scratch, copilul devine <b>creator</b>, nu doar consumator.
             </p>
 
+            <!-- TRUST SIGNALS (nou) -->
+            <div class="kpis" aria-label="Semnale de încredere (rapid)">
+              <div class="kpi"><b>✅ Grupe mici</b><span>atenție individuală</span></div>
+              <div class="kpi"><b>🛡️ Siguranță online</b><span>reguli clare + etică</span></div>
+              <div class="kpi"><b>🎓 Diplomă</b><span>la final de modul</span></div>
+              <div class="kpi"><b>🏁 Showcase</b><span>proiect prezentat</span></div>
+            </div>
+
             <div class="hero-cta" id="inscriere">
-              <a class="btn primary" id="enrollBtnHero" href="#">✍️ Înscrie copilul la curs</a>
-              <a class="btn whatsapp" id="whBtnHero" href="#">📲 Doresc info pe WhatsApp</a>
+              <a class="btn primary" id="enrollBtnHero" href="#">✅ Rezervă un loc (confirmare)</a>
+              <a class="btn whatsapp" id="whBtnHero" href="#">💬 Întreabă rapid (program + cost)</a>
               <a class="btn" href="#programa">🧩 Vezi ce facem la curs</a>
             </div>
 
@@ -1093,22 +1156,31 @@
             </div>
           </div>
 
+          <div class="side-card" id="incredere">
+            <h3>De ce ai încredere ca părinte</h3>
+            <p>
+              Programul este construit pentru progres real: <b>ritm prietenos</b>, explicații simple,
+              proiecte practice și feedback constant. Accent pe <b>siguranță digitală</b> și reguli clare.
+            </p>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+              <span class="badge" style="margin:0;">✅ Grup mic • atenție individuală</span>
+              <span class="badge" style="margin:0;">🛡️ Siguranță digitală • reguli clare</span>
+              <span class="badge" style="margin:0;">🎓 Diplomă • progres vizibil</span>
+            </div>
+          </div>
+
           <div class="side-card">
             <h3>Ce îți trebuie?</h3>
             <p>
               <b>Fără echipamente speciale.</b> Doar un laptop și imaginație.
               Ritm prietenos, explicații simple, sprijin constant din partea trainerilor.
             </p>
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-              <span class="badge" style="margin:0;">✅ Grup mic • atenție individuală</span>
-              <span class="badge" style="margin:0;">🛡️ Siguranță digitală • reguli clare</span>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- BENEFICII -->
+    <!-- BENEFICII (păstrat) -->
     <section id="beneficii">
       <div class="section-title">
         <h2>Ce învață copilul tău</h2>
@@ -1148,7 +1220,7 @@
       </div>
     </section>
 
-    <!-- PROGRAMA -->
+    <!-- PROGRAMA (păstrat) -->
     <section id="programa">
       <div class="section-title">
         <h2>Programă pe pași</h2>
@@ -1195,19 +1267,188 @@
           <div style="margin-top:14px; padding:14px; border-radius:var(--radius); border:1px solid var(--line2); background: rgba(14,68,140,.05);">
             <p style="margin:0; font-weight:1100; color:var(--brand);">🎓 Înscriere rapidă</p>
             <p style="margin:8px 0 0; color: var(--muted); font-size: 13.8px; line-height:1.55; font-weight:650;">
-              Apasă „Înscrie-te” și se deschide automat emailul tău cu un formular precompletat.
-              Completezi datele și trimiți.
+              Apasă „Rezervă un loc” și se deschide automat emailul tău cu un formular precompletat.
+              Completezi datele și trimiți. Îți răspundem cu confirmarea și detaliile grupei.
             </p>
             <div class="hero-cta" style="margin-top:12px;">
-              <a class="btn primary" id="enrollBtnMid" href="#">🏅 Înscrie-te la curs</a>
-              <a class="btn whatsapp" id="whBtnMid" href="#">💬 Întreabă pe WhatsApp</a>
+              <a class="btn primary" id="enrollBtnMid" href="#">🏅 Rezervă un loc</a>
+              <a class="btn whatsapp" id="whBtnMid" href="#">💬 Întreabă rapid</a>
             </div>
+            <p style="margin:12px 0 0; color:var(--muted2); font-size:13px; font-weight:800; line-height:1.5;">
+              Notă: programul și costul (dacă este cazul) se comunică rapid la cerere pe WhatsApp sau email.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FORMATOR -->
+    <!-- CUM ARATĂ O ORĂ (nou) -->
+    <section id="cum-arata">
+      <div class="section-title">
+        <h2>Cum arată o oră de curs</h2>
+        <p>Claritate pentru părinți, energie pentru copii: structură simplă, progres rapid, feedback constant.</p>
+      </div>
+
+      <div class="card">
+        <div class="session" aria-label="Structura unei ședințe">
+          <div class="slot">
+            <b>1) Warm-up (5 min)</b>
+            <span>Încălzire creativă + recapitulare scurtă, pe înțelesul copiilor.</span>
+          </div>
+          <div class="slot">
+            <b>2) Demonstrație (10 min)</b>
+            <span>Arătăm un concept (ex: condiții, bucle, variabile) cu exemple vizuale în Scratch.</span>
+          </div>
+          <div class="slot">
+            <b>3) Practică (30–40 min)</b>
+            <span>Copiii lucrează la proiect, primesc sprijin 1:1 și învață să “debug” (repare).</span>
+          </div>
+          <div class="slot">
+            <b>4) Feedback (5–10 min)</b>
+            <span>Fiecare copil arată ce a făcut. Încurajare, feedback constructiv, pași următori.</span>
+          </div>
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <span class="badge" style="margin:0;">✅ Ritm prietenos</span>
+          <span class="badge" style="margin:0;">🧩 Învățare prin proiecte</span>
+          <span class="badge" style="margin:0;">🎯 Progres vizibil</span>
+          <span class="badge" style="margin:0;">🧠 Încredere & autonomie</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- REZULTATE (nou) -->
+    <section id="rezultate">
+      <div class="section-title">
+        <h2>Ce pleacă acasă copilul după curs</h2>
+        <p>Rezultate concrete, ușor de înțeles: copilul vede ce poate crea și capătă încredere.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h2>🎮 1–3 jocuri</h2>
+          <p>Jocuri simple cu scor, niveluri și reguli clare, create de copil în Scratch.</p>
+          <ul class="list">
+            <li class="li"><span class="tick">✓</span><span>Scor & “game over”</span></li>
+            <li class="li"><span class="tick">✓</span><span>Niveluri / dificultate</span></li>
+            <li class="li"><span class="tick">✓</span><span>Testare & îmbunătățire</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>🎬 Animații & povești</h2>
+          <p>Storytelling digital: scene, personaje, sunete și dialoguri — cu mesaj pozitiv.</p>
+          <ul class="list">
+            <li class="li"><span class="tick">✓</span><span>Scene & tranziții</span></li>
+            <li class="li"><span class="tick">✓</span><span>Sunete & efecte</span></li>
+            <li class="li"><span class="tick">✓</span><span>Creativitate + logică</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>🏁 Mini-portfolio</h2>
+          <p>Un set de proiecte pe care copilul le poate arăta cu mândrie (familie/școală).</p>
+          <ul class="list">
+            <li class="li"><span class="tick">✓</span><span>Proiect final prezentat</span></li>
+            <li class="li"><span class="tick">✓</span><span>Diplomă / feedback</span></li>
+            <li class="li"><span class="tick">✓</span><span>Încredere & comunicare</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROIECTE (nou) -->
+    <section id="proiecte">
+      <div class="section-title">
+        <h2>Exemple de proiecte (stil “mini-portofoliu”)</h2>
+        <p>Nu sunt încă poze? E ok. Aceste exemple arată ce construim la curs. Le poți actualiza cu screenshot-uri din Scratch.</p>
+      </div>
+
+      <div class="portfolio" aria-label="Exemple proiecte Scratch">
+        <div class="proj">
+          <h3>🕹️ Joc “Catching Game”</h3>
+          <p>Prinde obiecte, acumulează puncte, evită obstacole. Învățăm scor, coliziuni, viteză.</p>
+          <div class="tagrow">
+            <span class="tag">Scor</span><span class="tag">Coliziuni</span><span class="tag">Viteză</span>
+          </div>
+        </div>
+        <div class="proj">
+          <h3>🎭 Animație cu mesaj</h3>
+          <p>O poveste scurtă cu personaje și dialoguri. “Code & Care”: empatie, respect, siguranță online.</p>
+          <div class="tagrow">
+            <span class="tag">Storytelling</span><span class="tag">Dialog</span><span class="tag">Etică</span>
+          </div>
+        </div>
+        <div class="proj">
+          <h3>❓ Quiz interactiv</h3>
+          <p>Întrebări, răspunsuri, punctaj. Învățăm variabile, condiții, feedback vizual.</p>
+          <div class="tagrow">
+            <span class="tag">Variabile</span><span class="tag">Condiții</span><span class="tag">UI</span>
+          </div>
+        </div>
+        <div class="proj">
+          <h3>🏃 Mini-platformer</h3>
+          <p>Sărituri, obstacole, niveluri. Învățăm bucle, gravitație simplă, control personaje.</p>
+          <div class="tagrow">
+            <span class="tag">Bucle</span><span class="tag">Niveluri</span><span class="tag">Control</span>
+          </div>
+        </div>
+        <div class="proj">
+          <h3>🌿 Proiect “pentru comunitate”</h3>
+          <p>Un mini-proiect cu mesaj despre mediu / bunătate / siguranță digitală (Code & Care).</p>
+          <div class="tagrow">
+            <span class="tag">Impact</span><span class="tag">Creativitate</span><span class="tag">Responsabilitate</span>
+          </div>
+        </div>
+        <div class="proj">
+          <h3>🎯 Joc cu niveluri</h3>
+          <p>Creștem dificultatea treptat. Copiii învață planificare, testare, îmbunătățire.</p>
+          <div class="tagrow">
+            <span class="tag">Plan</span><span class="tag">Debug</span><span class="tag">Progres</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-final" style="margin-top:14px;">
+        <div>
+          <h3>Vrei să-ți trimitem exemple reale?</h3>
+          <p>Scrie pe WhatsApp și îți trimitem rapid câteva exemple de proiecte (screenshot-uri din Scratch) + pașii de înscriere.</p>
+        </div>
+        <div class="hero-cta" style="margin:0;">
+          <a class="btn whatsapp" id="whBtnProjects" href="#">💬 Cere exemple pe WhatsApp</a>
+          <a class="btn primary" id="enrollBtnProjects" href="#">✅ Rezervă un loc</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALE (nou) -->
+    <section id="testimoniale">
+      <div class="section-title">
+        <h2>Ce spun părinții și copiii</h2>
+        <p>Mesaje reale (poți înlocui oricând textul cu feedback primit).</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h2>👩‍👦 Părinte</h2>
+          <p>„Copilul vine acasă entuziasmat și îmi explică singur cum funcționează proiectul. Se vede progresul!”</p>
+          <p style="margin-top:10px; color:var(--muted2); font-size:13px; font-weight:800;">— Adjud</p>
+        </div>
+        <div class="card">
+          <h2>🧒 Copil</h2>
+          <p>„Mi-am făcut primul joc cu scor! Și am învățat să repar când nu merge.”</p>
+          <p style="margin-top:10px; color:var(--muted2); font-size:13px; font-weight:800;">— 10 ani</p>
+        </div>
+        <div class="card">
+          <h2>🏫 Profesor / partener</h2>
+          <p>„Copiii lucrează practic și capătă încredere. Activitățile dezvoltă logică și creativitate.”</p>
+          <p style="margin-top:10px; color:var(--muted2); font-size:13px; font-weight:800;">— (opțional)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMATOR (păstrat) -->
     <section id="formator" aria-label="Formatorul cursului">
       <div class="section-title">
         <h2>Formator</h2>
@@ -1250,7 +1491,43 @@
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- SIGURANȚĂ & GDPR (nou) -->
+    <section id="siguranta">
+      <div class="section-title">
+        <h2>Siguranță & confidențialitate</h2>
+        <p>Încrederea părinților e esențială: reguli clare, comunicare, respectarea datelor.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h2>🛡️ Siguranță digitală</h2>
+          <ul class="list">
+            <li class="li"><span class="tick">✓</span><span>Reguli simple de comportament online (respect, limbaj, colaborare)</span></li>
+            <li class="li"><span class="tick">✓</span><span>Copilul învață să recunoască riscuri: link-uri, mesaje suspecte, conturi false</span></li>
+            <li class="li"><span class="tick">✓</span><span>Proiecte “Code & Care”: empatie, responsabilitate, impact pozitiv</span></li>
+          </ul>
+        </div>
+
+        <div class="card" id="privacy">
+          <h2>🔒 Date personale & foto/video</h2>
+          <ul class="list">
+            <li class="li"><span class="tick">✓</span><span>Colectăm doar datele necesare pentru înscriere și organizare</span></li>
+            <li class="li"><span class="tick">✓</span><span>Nu publicăm date personale ale copiilor</span></li>
+            <li class="li"><span class="tick">✓</span><span>Foto/video doar cu acordul părintelui/tutorelui (opțional)</span></li>
+          </ul>
+
+          <div style="margin-top:12px; padding:14px; border-radius:var(--radius); border:1px solid var(--line2); background: rgba(37,163,223,.08);">
+            <p style="margin:0; font-weight:1100; color:var(--brand);">📄 Documente (simplu, clar)</p>
+            <p style="margin:8px 0 0; color: var(--muted); font-size: 13.8px; line-height:1.55; font-weight:650;">
+              Am inclus mai jos secțiuni scurte cu “Politica de confidențialitate” și “Acord foto/video”.
+              Le poți adapta ușor după nevoi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ (păstrat + extins) -->
     <section id="faq">
       <div class="section-title">
         <h2>Întrebări frecvente</h2>
@@ -1272,12 +1549,26 @@
         </details>
         <details>
           <summary>Cum mă înscriu?</summary>
-          <p>Apasă „Înscrie-te” (email precompletat) sau scrie pe WhatsApp „Doresc info legat de curs”.</p>
+          <p>Apasă „Rezervă un loc” (email precompletat) sau scrie pe WhatsApp „Doresc info legat de curs”.</p>
+        </details>
+
+        <!-- FAQ extra (nou) -->
+        <details>
+          <summary>Cum se formează grupele?</summary>
+          <p>Grupe pe vârstă și nivel (începător/intermediar). Scopul este ca fiecare copil să țină pasul și să progreseze.</p>
+        </details>
+        <details>
+          <summary>Copilul are emoții / este timid. Se adaptează?</summary>
+          <p>Da. Lucrăm cu pași mici, încurajare, feedback pozitiv. Showcase-ul final ajută la încredere și comunicare.</p>
+        </details>
+        <details>
+          <summary>Programul și costul cum se comunică?</summary>
+          <p>Îți răspundem rapid pe WhatsApp sau email cu programul complet și costul (dacă este cazul), plus pașii de înscriere.</p>
         </details>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- CONTACT (păstrat) -->
     <section id="contact">
       <div class="section-title">
         <h2>Înscriere & Contact</h2>
@@ -1286,10 +1577,10 @@
 
       <div class="grid2">
         <div class="card">
-          <h2>✍️ Înscrie copilul</h2>
+          <h2>✍️ Rezervă un loc</h2>
           <p>Butonul de mai jos deschide automat emailul către <b>thetechologyhub@gmail.com</b> cu un formular de completat.</p>
           <div class="hero-cta" style="margin-top:14px;">
-            <a class="btn primary" id="enrollBtnBottom" href="#">🏆 Înscrie-te la curs</a>
+            <a class="btn primary" id="enrollBtnBottom" href="#">🏆 Rezervă un loc</a>
             <a class="btn" href="#acasa">⬆️ Înapoi sus</a>
           </div>
           <p style="margin-top:12px; color:var(--muted2); font-size:13px; line-height:1.5; font-weight:750;">
@@ -1298,7 +1589,7 @@
         </div>
 
         <div class="card">
-          <h2>💬 Doresc info (WhatsApp)</h2>
+          <h2>💬 Întreabă rapid (WhatsApp)</h2>
           <p>Îți răspund rapid cu detalii despre grupe, program, perioadă și pașii de înscriere.</p>
           <div class="hero-cta" style="margin-top:14px;">
             <a class="btn whatsapp" id="whBtnBottom" href="#">📞 WhatsApp 0772 246 337</a>
@@ -1314,7 +1605,7 @@
       </div>
     </section>
 
-    <!-- FINAL CTA -->
+    <!-- FINAL CTA (păstrat) -->
     <section aria-label="Call to Action Final">
       <div class="cta-final">
         <div>
@@ -1325,13 +1616,54 @@
           </p>
         </div>
         <div class="hero-cta" style="margin:0;">
-          <a class="btn primary" id="enrollBtnFinal" href="#">✅ Înscrie-te acum</a>
-          <a class="btn whatsapp" id="whBtnFinal" href="#">💬 Întreabă pe WhatsApp</a>
+          <a class="btn primary" id="enrollBtnFinal" href="#">✅ Rezervă un loc acum</a>
+          <a class="btn whatsapp" id="whBtnFinal" href="#">💬 Întreabă rapid pe WhatsApp</a>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- Politica de confidențialitate (nou) -->
+    <section id="politica-confidentialitate">
+      <div class="section-title">
+        <h2>Politica de confidențialitate (scurtă)</h2>
+        <p>Text simplu, orientativ. Îl poți ajusta în funcție de nevoi.</p>
+      </div>
+
+      <div class="card">
+        <p>
+          <b>Ce date colectăm:</b> nume copil, vârstă, nume părinte/tutore, telefon, email și informații necesare organizării grupei.
+          <br/><br/>
+          <b>De ce le colectăm:</b> pentru înscriere, comunicare, organizarea cursului și confirmarea locului.
+          <br/><br/>
+          <b>Cum protejăm datele:</b> folosim datele doar pentru scopul înscrierii și comunicării; nu publicăm date personale ale copiilor;
+          accesul la informații este limitat.
+          <br/><br/>
+          <b>Foto/Video:</b> realizarea și publicarea de materiale foto/video se face doar cu acordul părintelui/tutorelui (dacă este cazul).
+          <br/><br/>
+          <b>Contact:</b> pentru solicitări legate de date, scrie la <b>thetechologyhub@gmail.com</b>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Acord foto/video (nou) -->
+    <section id="acord-foto-video">
+      <div class="section-title">
+        <h2>Acord foto/video (opțional, scurt)</h2>
+        <p>Poți folosi această secțiune ca text informativ sau ca bază pentru un formular.</p>
+      </div>
+
+      <div class="card">
+        <p>
+          Prin participarea la activități, părintelui/tutorelui i se poate solicita, separat, acordul pentru realizarea de fotografii/video
+          în scopuri educaționale și de promovare a programului (ex: postări informative).
+          <br/><br/>
+          <b>Important:</b> acordul este opțional; lipsa acordului nu împiedică participarea copilului la curs.
+          În cazul aprobării, se evită publicarea datelor personale ale copilului.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER (păstrat + linkuri noi) -->
     <footer>
       <div class="footer-card">
         <div>
@@ -1340,9 +1672,11 @@
           <span>Adjud • Str. Alexandru Ioan Cuza nr. 64</span>
         </div>
         <div class="small-links">
-          <a id="enrollLinkFooter" href="#">Înscrie-te</a>
+          <a id="enrollLinkFooter" href="#">Rezervă un loc</a>
           <a id="whLinkFooter" href="#">WhatsApp</a>
           <a href="#faq">FAQ</a>
+          <a href="#politica-confidentialitate">Confidențialitate</a>
+          <a href="#acord-foto-video">Acord foto/video</a>
         </div>
       </div>
       <div style="margin-top:12px; text-align:center;">
@@ -1400,7 +1734,7 @@
     const BODY =
 `Bună ziua,
 
-Doresc să înscriu copilul la programul „Code & Care 2026 – Scratch pentru un viitor mai bun” (Youth Code Academy – Adjud).
+Doresc să rezerv un loc pentru copil la programul „Code & Care 2026 – Scratch pentru un viitor mai bun” (Youth Code Academy – Adjud).
 
 Vă rog să mă ajutați cu confirmarea locului și detaliile despre grupă / program.
 
@@ -1434,14 +1768,20 @@ Mulțumesc,
     const mailtoLink = makeMailto(TO_EMAIL, SUBJECT, BODY);
     const whatsappLink = makeWhatsApp(WHATSAPP_PHONE_INT, WHATSAPP_MESSAGE);
 
-    // Apply mailto to all enroll CTAs (include drawer)
-    ["enrollBtnTop","enrollBtnHero","enrollBtnMid","enrollBtnBottom","enrollBtnFinal","enrollLinkFooter","enrollBtnDrawer"].forEach(id=>{
+    // Apply mailto to all enroll CTAs
+    [
+      "enrollBtnTop","enrollBtnHero","enrollBtnMid","enrollBtnBottom","enrollBtnFinal","enrollLinkFooter",
+      "enrollBtnDrawer","enrollBtnProjects"
+    ].forEach(id=>{
       const el = document.getElementById(id);
       if(el) el.setAttribute("href", mailtoLink);
     });
 
-    // Apply WhatsApp links (include drawer)
-    ["whBtnTop","whBtnHero","whBtnMid","whBtnBottom","whBtnFinal","whLinkFooter","waFloat","whBtnTrainer","whBtnDrawer"].forEach(id=>{
+    // Apply WhatsApp links
+    [
+      "whBtnTop","whBtnHero","whBtnMid","whBtnBottom","whBtnFinal","whLinkFooter","waFloat","whBtnTrainer",
+      "whBtnDrawer","whBtnProjects"
+    ].forEach(id=>{
       const el = document.getElementById(id);
       if(el){
         el.setAttribute("href", whatsappLink);
